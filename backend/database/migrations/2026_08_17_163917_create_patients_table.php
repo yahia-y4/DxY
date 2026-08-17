@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string("name");
             $table->string("father_name")->nullable();
-            $table->string("Nick_Name");
+            $table->string("nick_name");
             $table->string("identity_card_number")->unique();
             $table->date("dirth_date");
         });
