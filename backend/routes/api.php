@@ -10,3 +10,5 @@ Route::get('/user', function (Request $request) {
 
 require __DIR__.'/doctors.php';
 require __DIR__.'/patients.php';
+require __DIR__.'/patientsMedicalRecords.php';
+require __DIR__.'/treatmentPlans.php';
