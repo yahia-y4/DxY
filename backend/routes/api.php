@@ -13,3 +13,4 @@ require __DIR__.'/patients.php';
 require __DIR__.'/patientsMedicalRecords.php';
 require __DIR__.'/treatmentPlans.php';
 require __DIR__.'/sessions.php';
+require __DIR__.'/appointments.php';
