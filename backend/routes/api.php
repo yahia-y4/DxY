@@ -9,3 +9,4 @@ Route::get('/user', function (Request $request) {
 
 
 require __DIR__.'/doctors.php';
+require __DIR__.'/patients.php';
