@@ -15,3 +15,4 @@ require __DIR__.'/sessions.php';
 require __DIR__.'/appointments.php';
 require __DIR__.'/patientCharges.php';
 require __DIR__.'/patientPayments.php';
+require __DIR__.'/auth.php';
