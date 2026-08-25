@@ -18,12 +18,14 @@ return new class extends Migration
             $table->foreignId("patient_id")->constrained("patients");
            $table->foreignId("treatment_plan_id")->nullable()->constrained("treatment_plans");
             $table->string("name");
+            $table->string("description")->nullable();
             $table->string("diagnosis")->nullable();
             $table->string("treatment")->nullable();
             $table->string("prescribed_medication")->nullable();
             $table->integer("teeth_number");
             $table->string("teeth_vertical"); // فوق - تحت 
             $table->string("teeth_horizontal"); // يمين - يسار
+        
             
         });
     }
