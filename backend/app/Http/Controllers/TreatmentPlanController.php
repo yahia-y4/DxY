@@ -48,6 +48,12 @@ class TreatmentPlanController extends Controller
         $treatmentPlan->delete();
         return response()->json(['message' => 'Treatment plan deleted successfully'], 200);
     }
+
+    public function getTreatmentPlansByPatientId($id)
+    {
+        $treatmentPlans = TreatmentPlan::where('patient_id', $id)->get();
+        return response()->json(['treatment_plans' => $treatmentPlans], 200);
+    }
     
       
 

@@ -9,4 +9,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/treatmentPlans/store', [TreatmentPlanController::class, 'store']);
     Route::put('/treatmentPlans/edit/{id}', [TreatmentPlanController::class, 'edit']);
     Route::delete('/treatmentPlans/delete/{id}', [TreatmentPlanController::class, 'delete']);
+    Route::get('/treatmentPlans/patient/{id}', [TreatmentPlanController::class, 'getTreatmentPlansByPatientId']);
+
 });
