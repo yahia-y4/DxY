@@ -25,6 +25,7 @@ class PatientChargeController extends Controller
         $charge->amount = $request->amount;
         $charge->note = $request->note;
         $charge->save();
+        $patient->save();
 
         return response()->json(['message' => 'Patient charge added successfully', 'charge' => $charge,'patient'=>$patient], 201);
 
