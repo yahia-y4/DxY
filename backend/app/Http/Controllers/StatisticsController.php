@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TreatmentSession;
-use App\Models\Patient;
+
 
 
 class StatisticsController extends Controller
@@ -18,5 +18,32 @@ class StatisticsController extends Controller
         return response()->json(['sessions' => $sessions], 200);
     
     }
+
+    public function getSessionsMonth(Request $request)
+    {
+        $doctorId = $request->user()->id;
+        $sessions = TreatmentSession::where('doctor_id', $doctorId)
+            ->whereYear('created_at', now()->year)
+            ->whereMonth('created_at', now()->month)
+            ->with('patient:id,name')
+            ->get();
+
+        return response()->json(['sessions' => $sessions], 200);
+    
+    }
+
+    public function getSessionsYear(Request $request)
+    {
+        $doctorId = $request->user()->id;
+        $sessions = TreatmentSession::where('doctor_id', $doctorId)
+            ->whereYear('created_at', now()->year)
+            ->with('patient:id,name')
+            ->get();
+
+        return response()->json(['sessions' => $sessions], 200);
+    
+    }
+
+
     
 }
