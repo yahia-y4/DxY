@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Patient extends Model
 {
-    //
+    public function sessions()
+{
+    return $this->hasMany(TreatmentSession::class);
+}
 }
