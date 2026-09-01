@@ -6,5 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class PatientPayment extends Model
 {
-    //
+    protected $fillable = [
+        'doctor_id',
+        'patient_id',
+        'amount',
+        'note',
+    ];
+
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class);
+    }
+
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class);
+    }
 }
