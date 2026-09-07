@@ -1,0 +1,9 @@
+
+.sideBar {
+    background-color: var(--win);
+    width: 200px;
+    height: 93vh;
+    border-left: 1px solid var(--border);
+  
+    box-shadow: var(--shadow);
+}
