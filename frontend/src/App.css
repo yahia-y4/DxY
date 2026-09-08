@@ -5,6 +5,8 @@
 }
 .app-content{
   height: 93vh;
+  display: flex;
+  flex-direction: row;
   overflow: hidden;
 
 }
