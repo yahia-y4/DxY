@@ -4,6 +4,8 @@
     width: 200px;
     height: 93vh;
     border-left: 1px solid var(--border);
-  
     box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    
 }

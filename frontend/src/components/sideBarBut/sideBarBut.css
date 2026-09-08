@@ -1,0 +1,13 @@
+.sideBarBut {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.sideBarBut:hover {
+    background-color: var(--hover);
+    box-shadow: var(--shadow);
+}
+
