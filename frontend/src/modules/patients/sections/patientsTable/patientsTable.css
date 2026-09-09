@@ -1,0 +1,21 @@
+
+.patientsTable{
+    height: 100%;
+    width:100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+    
+    padding-top: 20px;
+}
+.patients-add-butn{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: var(--win);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}

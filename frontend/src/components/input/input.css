@@ -1,0 +1,26 @@
+.input-div{
+   width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+  
+  
+}
+.input-div input{
+    width: 100%;
+    padding: 4px;
+    border: 1px solid var(--border);
+    background-color: var(--win);
+    border-radius: 7px;
+    outline: none;
+    color: var(--textColor);
+    font-size: 15px;
+    direction: rtl;
+}   
+
+
+.input-div label{
+    font-size: 15px;
+}

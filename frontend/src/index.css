@@ -1,14 +1,10 @@
 :root {
   --text: #fff;
-  --bg:radial-gradient(
-  circle at top right,
-  #dff3ff 0%,
-  #e7f5ff 35%,
-  #ffffff 75%
-);
+  --bg:  linear-gradient(135deg, #2564eb73 0%, #c08de2bb 100%);;
   --win:#075985;
   --border: #e5e4e7;
   --hover: #0c4a6e;
+  --TopTableColor: #0c4a6e;
   --shadow: #0000001a 0 10px 15px -3px, #0000000d 0 4px 6px -2px;
 }
 
@@ -17,7 +13,7 @@
 body {
   direction: rtl;
   font-family: sans-serif;
-  background-color: var(--bg);
+  background:var(--bg);
   color: var(--text);
   margin: 0;
   padding: 0;

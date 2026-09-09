@@ -1,7 +1,8 @@
 import "./table.css";
 
-export default function Table({ columns, data, onRowClick }) {
+export default function Table({ columns, data, onRowClick , w , h }) {
   return (
+   < div className="table-div" style={{width: w, height: h}}>
     <table className="table">
       <thead>
         <tr>
@@ -20,5 +21,6 @@ export default function Table({ columns, data, onRowClick }) {
         ))}
       </tbody>
     </table>
+    </div>
   );
 }
