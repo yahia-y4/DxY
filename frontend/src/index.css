@@ -1,6 +1,7 @@
 :root {
-  --text: #fff;
-  --bg:  linear-gradient(135deg, #2564eb73 0%, #c08de2bb 100%);;
+  --text1: #fff;
+  --text2: #000;
+  --bg: #b2e4e6;
   --win:#075985;
   --border: #e5e4e7;
   --hover: #0c4a6e;
@@ -17,4 +18,7 @@ body {
   color: var(--text);
   margin: 0;
   padding: 0;
+}
+*{
+  margin: 0px;
 }

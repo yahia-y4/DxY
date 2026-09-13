@@ -1,0 +1,21 @@
+.infoWin-box{
+  color: var(--text2);
+  height: 70px;
+  width: 120px;
+
+
+    
+}
+
+.infoWin-div{
+    width: 100%;
+    height: 100%;
+    background-color: var(--win);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--text1);
+    border-radius: 10px;
+   
+}

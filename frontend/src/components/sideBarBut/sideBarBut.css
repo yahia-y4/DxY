@@ -5,6 +5,7 @@
   gap: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  color: var(--text1);
 }
 .sideBarBut:hover {
     background-color: var(--hover);
