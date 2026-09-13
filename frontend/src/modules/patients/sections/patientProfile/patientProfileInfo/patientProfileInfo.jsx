@@ -38,6 +38,8 @@ export default function PatientProfileInfo() {
         <InfoWin lable={"الاسم"} data={"يحيى"} w={"100%"} h={"150px"} />
         <InfoWin lable={"الاسم"} data={"يحيى"} w={"100%"} h={"150px"} />
       </section>
+
+      
     </div>
   );
 }
