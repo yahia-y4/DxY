@@ -5,7 +5,7 @@ import AirlineSeatFlatAngledOutlinedIcon from "@mui/icons-material/AirlineSeatFl
 import LibraryBooksOutlinedIcon from "@mui/icons-material/LibraryBooksOutlined";
 import AttachMoneyOutlinedIcon from "@mui/icons-material/AttachMoneyOutlined";
 import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
-import InfoWin from "../../../../../infoWin/infoWin";
+import InfoWin from "../../../../../components/infoWin/infoWin";
 
 export default function PatientProfileInfo() {
   return (
