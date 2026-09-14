@@ -1,16 +1,17 @@
-.textarea-div{
-   width: 100%;
+.select-div{
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 5px;
     align-items: center;
     justify-content: center;
-  
-  
+    gap: 5px;
 }
-.textarea-div textarea{
-    width: 100%;
-    height: 100%;
+.select-div label{
+      font-size: 17px;
+    color:var(--text2);
+}
+.select-div select{
+ width: 100%;
     padding: 4px;
     border: 1px solid var(--border);
     background-color: var(--win);
@@ -19,11 +20,4 @@
     color: var(--text1);
     font-size: 15px;
     direction: rtl;
-    resize:none;
-}   
-
-
-.textarea-div label{
-      font-size: 17px;
-    color: black;
 }

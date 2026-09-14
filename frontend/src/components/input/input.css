@@ -15,7 +15,7 @@
     background-color: var(--win);
     border-radius: 7px;
     outline: none;
-    color: var(--text);
+    color: var(--text1);
     font-size: 15px;
     direction: rtl;
 }   
@@ -23,5 +23,5 @@
 
 .input-div label{
     font-size: 17px;
-    color: black;
+    color:var(--text2);
 }
