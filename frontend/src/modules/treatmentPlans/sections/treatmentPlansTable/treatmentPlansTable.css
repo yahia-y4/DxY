@@ -1,0 +1,16 @@
+
+.treatmentPlans-div{
+    width: 100%;
+    height: 95%;
+
+}
+
+.treatmentPlans-Table{
+    width: 70%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    gap: 15px;
+}

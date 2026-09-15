@@ -1,7 +1,8 @@
 import "./App.css";
 import NavBar from "./components/navBar/navBar";
 import SideBar from "./components/sideBar/sideBar";
-import SessionsPage from "./modules/sessions/sessionsPage/sessionsPage";
+import TreatmentPlansPage from "./modules/treatmentPlans/treatmentPlansPage/treatmentPlansPage";
+// import SessionsPage from "./modules/sessions/sessionsPage/sessionsPage";
 // import HomePage from "./modules/home/homePage/homePage";
 // import PatientsPage from "./modules/patients/patientsPage/patientsPage";
 
@@ -19,7 +20,8 @@ function App() {
         <SideBar/>
         {/* <HomePage /> */}
         {/* <PatientsPage></PatientsPage> */}
-        <SessionsPage/>
+        {/* <SessionsPage/> */}
+        <TreatmentPlansPage/>
       </div>
     </div>
 

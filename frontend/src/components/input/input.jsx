@@ -1,8 +1,8 @@
 import "./input.css";
 
-export default function Input({ label, value, onChange, type = "text" ,labelC}) {
+export default function Input({ label, value, onChange, type = "text" ,labelC,w}) {
   return (
-    <div className="input-div">
+    <div className="input-div" style={{width:w}}>
       {label && <label className="input-label" style={{color:labelC}}>{label}</label>}
       <input
         className="input-field"
