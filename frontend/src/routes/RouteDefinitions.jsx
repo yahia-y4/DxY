@@ -1,0 +1,11 @@
+import HomePage from "../modules/home/homePage/homePage";
+import PatientsPage from "../modules/patients/patientsPage/patientsPage";
+import SessionsPage from "../modules/sessions/sessionsPage/sessionsPage";
+import TreatmentPlansPage from "../modules/treatmentPlans/treatmentPlansPage/treatmentPlansPage";
+
+export const RouteDefine = [
+  { path: "/", element: <HomePage /> },
+  { path: "/patients", element: <PatientsPage /> },
+  { path: "/sessions", element: <SessionsPage /> },
+  { path: "/treatmentPlans", element: <TreatmentPlansPage /> },
+];
