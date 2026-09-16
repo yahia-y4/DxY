@@ -8,7 +8,7 @@ export default function TreatmentPlanAdd(){
     return(
         <div className="treatmentPlanAdd">
             <Input label={"اسم الخطة"} w={"90%"}/>
-            <Select label={"المريض"} w={"90%"}/>
+            <Select label={"المريض"} w={"93%"}/>
             <Textarea label={"الوصف"} w={"90%"} h={"65%"} />
             <div className="treatmentPlanAdd-buts">
                 <Button lable={"اضافة"}/>

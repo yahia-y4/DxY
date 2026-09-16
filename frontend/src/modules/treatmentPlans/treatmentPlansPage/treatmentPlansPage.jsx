@@ -1,13 +1,23 @@
-
 import TreatmentPlanAdd from "../sections/treatmentPlanAdd/treatmentPlanAdd"
 import TreatmentPlansTable from "../sections/treatmentPlansTable/treatmentPlansTable"
-import "./treatmentPlansPage.css"
+// import SessionInfo from "../../sessions/sections/sessionInfo/sessionInfo";
+// import TreatmentPlanInfo from "../sections/treatmentPlanInfo/treatmentPlanInfo";
+// import SessionAdd from "../../sessions/sections/sessionAdd/sessionAdd";
 
-export default function TreatmentPlansPage(){
-return(
+import "./treatmentPlansPage.css";
+
+export default function TreatmentPlansPage() {
+  return (
     <div className="treatmentPlans-Page">
-        <TreatmentPlanAdd/>
+      <TreatmentPlanAdd/>
         <TreatmentPlansTable/>
+
+
+      {/* <TreatmentPlanInfo/> */}
+
+      {/* <SessionInfo/> */}
+
+      {/* <SessionAdd/> */}
     </div>
-)
+  );
 }
