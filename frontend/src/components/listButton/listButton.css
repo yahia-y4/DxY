@@ -1,0 +1,32 @@
+.listButton {
+    width: fit-content;
+    min-width: 70px;
+    height: 20px;
+    background-color: var(--win);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    color: var(--text1);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.listButton:hover {
+    background-color: var(--hover);
+}
+
+.listButton-selected {
+    width: fit-content;
+    min-width: 70px;
+    height: 20px;
+    background-color: var(--win);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    color: var(--text1);
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: var(--hover);
+}

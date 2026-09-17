@@ -28,7 +28,7 @@ export default function SideBar() {
       <Link to="/treatmentPlans" style={{textDecoration:"none"}}>
         <SideBarBut icon={<LibraryBooksOutlinedIcon />} text="الخطط العلاجية" />
       </Link>
-      <Link style={{textDecoration:"none"}}>
+      <Link to="/appointments" style={{textDecoration:"none"}}>
         <SideBarBut icon={<AssignmentOutlinedIcon />} text="المواعيد" />
       </Link>
       <Link style={{textDecoration:"none"}}>

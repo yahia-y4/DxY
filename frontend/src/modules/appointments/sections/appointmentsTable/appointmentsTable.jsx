@@ -1,0 +1,41 @@
+import ListButton from "../../../../components/listButton/listButton";
+import Search from "../../../../components/search/search";
+import Table from "../../../../components/table/table";
+import "./appointmentsTable.css";
+
+export default function AppointmentsTable() {
+      const columns = [
+    { name: "name", label: "المريض" },
+    { name: "date", label: "تاريخ الموعد" },
+    { name: "day", label: "اليوم" },
+    { name: "hour", label: "الساعة" },
+    { name: "state", label: "الحالة" },
+    { name: "reason", label: "سبب الحجز" },
+  ];
+  const data = [
+    { name: "يحيى محمد الحمود", age: 20, date: "2026/9/17",day:"الخميس",hour:"12:30",state:"منتظر",reason:"قلع سن عقل"},
+    { name: "يحيى محمد الحمود", age: 20, date: "2026/9/17",day:"الخميس",hour:"12:30",state:"منتظر",reason:"قلع سن عقل"},
+    { name: "يحيى محمد الحمود", age: 20, date: "2026/9/17",day:"الخميس",hour:"12:30",state:"منتظر",reason:"قلع سن عقل"},
+    { name: "يحيى محمد الحمود", age: 20, date: "2026/9/17",day:"الخميس",hour:"12:30",state:"منتظر",reason:"قلع سن عقل"},
+    { name: "يحيى محمد الحمود", age: 20, date: "2026/9/17",day:"الخميس",hour:"12:30",state:"منتظر",reason:"قلع سن عقل"},
+    { name: "يحيى محمد الحمود", age: 20, date: "2026/9/17",day:"الخميس",hour:"12:30",state:"منتظر",reason:"قلع سن عقل"}
+
+  ];
+  return (
+    <div className="appointmentsTable">
+      <section className="section-1">
+        <div className="control-buts">
+          <ListButton selected={true} label={"الكل"} />
+          <ListButton label={"مواعيد اليوم"} />
+          <ListButton label={"المواعيد التامة"} />
+          <ListButton label={"المواعيد المنتظرة"} />
+          <ListButton label={"اضافة موعد"} />
+        </div>
+        <Search w={"40%"} />
+      </section>
+      <section className="section-2">
+         <Table  data={data} columns={columns} w={"95%"}/>
+      </section>
+    </div>
+  );
+}
