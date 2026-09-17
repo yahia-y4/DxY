@@ -5,7 +5,7 @@ import "./appointmentsPage.css"
 export default function AppointmentsPage() {
     return(
         <div className="appointmentsPage">
-             {/* <AppointmentAdd/> */}
+             <AppointmentAdd/>
             <AppointmentsTable/>
            
         </div>
