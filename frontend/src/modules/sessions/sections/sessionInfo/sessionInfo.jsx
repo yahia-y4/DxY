@@ -1,7 +1,7 @@
 import "./sessionInfo.css";
 import AppRegistrationOutlinedIcon from "@mui/icons-material/AppRegistrationOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import InfoWin from "../../../../components/infoWin/infoWin";
 import ShowToothWin from "../../../../components/showToothWin/showToothWin";
 
@@ -12,7 +12,7 @@ export default function SessionInfo() {
         <div className="Control-buts">
           <AppRegistrationOutlinedIcon style={{ fontSize: "27" }} />
           <DeleteOutlineOutlinedIcon style={{ fontSize: "27" }} />
-          <HighlightOffOutlinedIcon style={{ fontSize: "27" }} />
+          <ArrowBackIcon style={{ fontSize: "27" }} />
         </div>
         <div className="content">
             <InfoWin  data={"معاينة"}/>

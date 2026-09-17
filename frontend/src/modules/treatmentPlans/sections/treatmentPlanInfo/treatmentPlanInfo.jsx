@@ -1,7 +1,7 @@
 import "./treatmentPlanInfo.css";
 import AppRegistrationOutlinedIcon from "@mui/icons-material/AppRegistrationOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import InfoWin from "../../../../components/infoWin/infoWin";
 import Search from "../../../../components/search/search";
 import Table from "../../../../components/table/table";
@@ -24,7 +24,7 @@ export default function TreatmentPlanInfo() {
         <div className="control-buts">
           <AppRegistrationOutlinedIcon />
           <DeleteOutlineOutlinedIcon />
-          <HighlightOffOutlinedIcon />
+          <ArrowBackIcon />
         </div>
         <div className="content-1">
           <InfoWin data={"زراعة 3 زرعات في الفك السفلي"} w={"300px"} />
@@ -38,7 +38,7 @@ export default function TreatmentPlanInfo() {
         <h3>{"جلسات هذه الخطة : "}</h3>
         <Search w={"85%"} />
         <Table data={data} columns={columns} w={"85%"} />
-        <AddButton/>
+        <AddButton />
       </section>
     </div>
   );

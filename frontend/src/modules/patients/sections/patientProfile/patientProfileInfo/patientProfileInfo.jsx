@@ -4,7 +4,7 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import AirlineSeatFlatAngledOutlinedIcon from "@mui/icons-material/AirlineSeatFlatAngledOutlined";
 import LibraryBooksOutlinedIcon from "@mui/icons-material/LibraryBooksOutlined";
 import AttachMoneyOutlinedIcon from "@mui/icons-material/AttachMoneyOutlined";
-import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import InfoWin from "../../../../../components/infoWin/infoWin";
 
 export default function PatientProfileInfo() {
@@ -17,7 +17,7 @@ export default function PatientProfileInfo() {
           <AirlineSeatFlatAngledOutlinedIcon style={{ fontSize: "27" }} />
           <LibraryBooksOutlinedIcon style={{ fontSize: "27" }} />
           <AttachMoneyOutlinedIcon style={{ fontSize: "27" }} />
-          <HighlightOffOutlinedIcon style={{ fontSize: "27" }} />
+          <ArrowBackIcon style={{ fontSize: "27" }} />
         </div>
         <div className="section-content">
           <InfoWin title={"الاسم"} data={"يحيى"} />
