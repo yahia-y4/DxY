@@ -1,7 +1,7 @@
 .infoWin-box{
   color: var(--text2);
-  height: 100px;
-  width: 120px;
+  height: 70px;
+  min-width: 120px;
 
 
     
@@ -17,5 +17,6 @@
     align-items: center;
     color: var(--text1);
     border-radius: 10px;
+    padding: 5px;
    
 }

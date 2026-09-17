@@ -29,6 +29,7 @@ export default function AppointmentsTable() {
           <ListButton label={"مواعيد اليوم"} />
           <ListButton label={"المواعيد التامة"} />
           <ListButton label={"المواعيد المنتظرة"} />
+          <ListButton label={"المواعيد الملغية"} />
           <ListButton label={"اضافة موعد"} />
         </div>
         <Search w={"40%"} />

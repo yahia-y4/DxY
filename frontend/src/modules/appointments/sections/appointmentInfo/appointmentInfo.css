@@ -3,6 +3,7 @@
     height: 95%;
     display: flex;
     flex-direction: column;
+    padding-right: 5px;
 
 }
 .appointmentInfo .control-buts{
@@ -11,9 +12,15 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    cursor: pointer;
 }
 .appointmentInfo .content{
     width: 100%;
-    height: 100%;
+    height: 40%;
+    gap: 20px;
     display: flex;
+    flex-wrap: wrap;
+    align-items:center;
+    justify-content: center;
+    border-top: solid 1px var(--text2);
 }
