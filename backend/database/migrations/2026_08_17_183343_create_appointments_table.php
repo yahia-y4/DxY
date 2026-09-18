@@ -17,7 +17,8 @@ return new class extends Migration
             $table->foreignId("doctor_id")->constrained("doctors");
             $table->foreignId("patient_id")->constrained("patients");
             $table->date("appointment_date");
-            $table->string("status");
+            $table->time("hour");
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->string("vist_reason")->nullable();
             $table->string("note")->nullable();
         });
