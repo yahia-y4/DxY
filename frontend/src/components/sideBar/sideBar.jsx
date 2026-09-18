@@ -34,10 +34,10 @@ export default function SideBar() {
       <Link to="/finance" style={{textDecoration:"none"}}>
         <SideBarBut icon={<AttachMoneyOutlinedIcon />} text="المالية" />
       </Link>
-      <Link style={{textDecoration:"none"}}>
+      <Link to="/statistics" style={{textDecoration:"none"}}>
         <SideBarBut icon={<PollOutlinedIcon />} text="الاحصائيات" />
       </Link>
-      <Link style={{textDecoration:"none"}}>
+      <Link to="/account" style={{textDecoration:"none"}}>
         <SideBarBut icon={<PersonOutlineOutlinedIcon />} text="الحساب" />
       </Link>
     </div>
