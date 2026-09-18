@@ -31,7 +31,7 @@ export default function SideBar() {
       <Link to="/appointments" style={{textDecoration:"none"}}>
         <SideBarBut icon={<AssignmentOutlinedIcon />} text="المواعيد" />
       </Link>
-      <Link style={{textDecoration:"none"}}>
+      <Link to="/finance" style={{textDecoration:"none"}}>
         <SideBarBut icon={<AttachMoneyOutlinedIcon />} text="المالية" />
       </Link>
       <Link style={{textDecoration:"none"}}>
