@@ -3,12 +3,16 @@ import Button from "../../../../components/button/button";
 import Input from "../../../../components/input/input";
 import Textarea from "../../../../components/textarea/textarea";
 import "./addPatient.css";  
-
-
+import {handleArrayState} from "../../../../helperFunctions/handleArrayState";
+import { PatientsContext } from "../../context/patientsContext";
+import { useContext } from "react";
 export default function AddPatient() {
+    const {
+        setSelectedPatientSection,
+      } = useContext(PatientsContext);
     return (
         <div className="add-Patient">
-            <form className="patient-inputs-form">
+            <div className="patient-inputs-form">
                 <section className="section-1">
                  <Input label={"الاسم"}/>
                  <Input label={"اسم الاب"}/>
@@ -20,7 +24,7 @@ export default function AddPatient() {
                  <div className="buts">
                     <Button lable={"اضافة"}/>
                     <Button lable={"محو"}/>
-                    <Button lable={"الغاء"}/>
+                    <Button onClick={()=>{handleArrayState(setSelectedPatientSection,0,"patientsTable")}} lable={"الغاء"}/>
                  </div>
 
                 </section>
@@ -30,7 +34,7 @@ export default function AddPatient() {
                 <Textarea label={"الادوية الحالة"} h={"150px"}/>
                 <Textarea label={"الوصف"} h={"150px"}/>
                 </section>
-            </form>
+            </div>
         </div>
     )
 }

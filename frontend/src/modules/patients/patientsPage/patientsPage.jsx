@@ -8,9 +8,9 @@ export default function PatientsPage() {
   const { selectedPatientSection } = useContext(PatientsContext);
   return (
     <div className="patientsPage">
-      {selectedPatientSection == "patientsTable" && <PatientsTable />}
-      {selectedPatientSection == "patientAdd" && <AddPatient />}
-      {selectedPatientSection == "patientProfile" && <PatientProfile />}
+      {selectedPatientSection[0] == "patientsTable" && <PatientsTable />}
+      {selectedPatientSection[0] == "patientAdd" && <AddPatient />}
+      {selectedPatientSection[0] == "patientProfile" && <PatientProfile />}
     </div>
   );
 }

@@ -7,11 +7,16 @@ import Textarea from "../../../../../components/textarea/textarea"
 
 
 
-
+import { handleArrayState } from "../../../../../helperFunctions/handleArrayState";
+import { PatientsContext } from "../../../context/patientsContext"
+import { useContext } from "react"
 export default function PatientEdit() {
+    const {
+        setSelectedPatientSection,
+      } = useContext(PatientsContext);
     return (
         <div className="edit-Patient">
-            <form className="patient-inputs-form">
+            <div className="patient-inputs-form">
                 <section className="section-1">
                  <Input label={"الاسم"} labelC={"#fff"}/>
                  <Input label={"اسم الاب"} labelC={"#fff"}/>
@@ -23,7 +28,7 @@ export default function PatientEdit() {
                  <div className="buts">
                     <Button lable={"تعديل"} labelC={"#fff"}/>
                     <Button lable={"محو"} labelC={"#fff"}/>
-                    <Button lable={"الغاء"} labelC={"#fff"}/>
+                    <Button onClick={()=>handleArrayState(setSelectedPatientSection,1,null)} lable={"الغاء"} labelC={"#fff"}/>
                  </div>
 
                 </section>
@@ -33,7 +38,7 @@ export default function PatientEdit() {
                 <Textarea label={"الادوية الحالة"} h={"150px"} labelC={"#fff"}/>
                 <Textarea label={"الوصف"} h={"150px"} labelC={"#fff"}/>
                 </section>
-            </form>
+            </div>
         </div>
     )
 }
