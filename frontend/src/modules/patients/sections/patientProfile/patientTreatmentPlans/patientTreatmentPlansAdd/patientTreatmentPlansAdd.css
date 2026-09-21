@@ -1,0 +1,16 @@
+.patientTreatmentPlans-Add{
+    width: 90%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.treatmentPlanAdd-buts{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

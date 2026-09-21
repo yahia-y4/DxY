@@ -23,6 +23,9 @@ export default function PatientProfileInfo() {
   function handleSessions() {
     handleArrayState(setSelectedPatientSection, 1, "patientSessions");
   }
+  function handleTreatmentPlans() {
+    handleArrayState(setSelectedPatientSection, 1, "PatientTreatmentPlans");
+  }
   //-------
 
   return (
@@ -44,6 +47,7 @@ export default function PatientProfileInfo() {
 
           />
           <IconButton
+          onClick={handleTreatmentPlans}
             icon={<LibraryBooksOutlinedIcon style={{ fontSize: "27" }} />}
           />
           <IconButton

@@ -1,18 +1,18 @@
-.treatmentPlanInfo{
-    width: 30%;
+.patientTreatmentPlans-Info{
+    width: 100%;
     height: 95%;
     display: flex;
     justify-content: space-around;
 }
 
-.treatmentPlanInfo .section-1{
+.patientTreatmentPlans-Info .section-1{
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 5px;
     
 }
-.treatmentPlanInfo .section-1 .control-buts{
+.patientTreatmentPlans-Info .section-1 .control-buts{
     width: 100%;
     height: 50px;
     display: flex;
@@ -20,18 +20,18 @@
     gap: 20px;
 
 }
-.treatmentPlanInfo .section-1 .content-1{
+.patientTreatmentPlans-Info .section-1 .content-1{
     width: 100%;
     height: 30%;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
     align-items: center;
     justify-content: center;
 
 }
 
-.treatmentPlanInfo .section-2{
+.patientTreatmentPlans-Info .section-2{
     width: 60%;
     display: flex;
     flex-direction: column;

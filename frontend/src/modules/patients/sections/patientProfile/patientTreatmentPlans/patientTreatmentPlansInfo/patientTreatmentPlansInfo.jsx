@@ -1,20 +1,28 @@
-import "./treatmentPlanInfo.css";
+import "./patientTreatmentPlansInfo.css";
 import AppRegistrationOutlinedIcon from "@mui/icons-material/AppRegistrationOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import InfoWin from "../../../../components/infoWin/infoWin";
-// import Search from "../../../../components/search/search";
-// import Table from "../../../../components/table/table";
-// import AddButton from "../../../../components/addButton/addButton";
-export default function TreatmentPlanInfo() {
+import InfoWin from "../../../../../../components/infoWin/infoWin";
+import IconButton from "../../../../../../components/iconButton/iconButton";
+import { useContext } from "react";
+import { PatientsContext } from "../../../../context/patientsContext";
+import { handleArrayState } from "../../../../../../helperFunctions/handleArrayState";
+export default function PatientTreatmentPlansInfo() {
+    const {setSelectedPatientSection} = useContext(PatientsContext)
 
+    //functions
+    function back(){
+        handleArrayState(setSelectedPatientSection,2,null)
+    }
+    //
   return (
-    <div className="treatmentPlanInfo">
+    <div className="patientTreatmentPlans-Info">
       <section className="section-1">
         <div className="control-buts">
-          <AppRegistrationOutlinedIcon />
-          <DeleteOutlineOutlinedIcon />
-          <ArrowBackIcon />
+     
+          <IconButton icon={<AppRegistrationOutlinedIcon />}/>
+          <IconButton icon={ <DeleteOutlineOutlinedIcon />}/>
+          <IconButton onClick={back} icon={<ArrowBackIcon />}/>
         </div>
         <div className="content-1">
           <InfoWin data={"زراعة 3 زرعات في الفك السفلي"} w={"300px"} />
