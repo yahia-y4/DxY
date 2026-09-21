@@ -6,6 +6,7 @@ import { PatientsContext } from "../context/patientsContext";
 import { useContext } from "react";
 export default function PatientsPage() {
   const { selectedPatientSection } = useContext(PatientsContext);
+;
   return (
     <div className="patientsPage">
       {selectedPatientSection[0] == "patientsTable" && <PatientsTable />}

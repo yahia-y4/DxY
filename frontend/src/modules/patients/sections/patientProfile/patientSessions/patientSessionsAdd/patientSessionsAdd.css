@@ -1,0 +1,45 @@
+.patient-sessions-add{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.patient-sessions-add .section-1{
+  
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  
+    
+}
+.patient-sessions-add .section-1 form{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    
+   
+}
+
+.patient-sessions-add .section-1 .add-buts{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.patient-sessions-add .section-2{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 17px;
+}
+
+

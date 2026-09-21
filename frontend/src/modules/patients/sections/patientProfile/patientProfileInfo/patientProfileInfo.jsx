@@ -20,6 +20,9 @@ export default function PatientProfileInfo() {
   function handleEdit() {
     handleArrayState(setSelectedPatientSection, 1, "patientEdit");
   }
+  function handleSessions() {
+    handleArrayState(setSelectedPatientSection, 1, "patientSessions");
+  }
   //-------
 
   return (
@@ -37,6 +40,8 @@ export default function PatientProfileInfo() {
             icon={
               <AirlineSeatFlatAngledOutlinedIcon style={{ fontSize: "27" }} />
             }
+            onClick={handleSessions}
+
           />
           <IconButton
             icon={<LibraryBooksOutlinedIcon style={{ fontSize: "27" }} />}
