@@ -4,24 +4,20 @@ import Table from "../../../../components/table/table";
 import "./patientsTable.css";
 import {handleArrayState} from "../../../../helperFunctions/handleArrayState";
 import { PatientsContext } from "../../context/patientsContext";
-import { useContext ,useEffect} from "react";
+import { useContext } from "react";
 import { usePatients } from "../../queries/usePatients";
-import { useError } from "../../../../context/errorContext/useError";
+
+import { useQueryUI } from "../../../../hooks/useQueryUI";
 export default function PatientsTable() {
 const {data ,isLoading,isError,error,hasToken} = usePatients()
-const {showError} = useError();
+  useQueryUI({isLoading,isError,error,hasToken})
  //Context---
   const {
     setSelectedPatientId,
     setSelectedPatientSection,
   } = useContext(PatientsContext);
     //---------
-  useEffect(()=>{
-    if (!hasToken) {showError("خطا في ايجاد التوكن !!")}
-    if (isError){showError(error.message)}
-      
 
-  },[data ,isLoading,isError,error,hasToken,showError])
 
 if (isLoading) {
   return (
