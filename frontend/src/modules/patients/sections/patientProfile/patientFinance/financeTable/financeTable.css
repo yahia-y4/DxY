@@ -1,0 +1,21 @@
+.financeTable{
+    width: 70%;
+    height: 95%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-direction: column;
+    
+}
+
+.financeTable .section-1{
+    width: 95%;
+    display: flex;
+
+}
+.financeTable .section-1 .financeTable-buts{
+    width: 30%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}

@@ -26,6 +26,9 @@ export default function PatientProfileInfo() {
   function handleTreatmentPlans() {
     handleArrayState(setSelectedPatientSection, 1, "PatientTreatmentPlans");
   }
+  function handleFinance() {
+    handleArrayState(setSelectedPatientSection, 1, "PatientFinance");
+  }
   //-------
 
   return (
@@ -51,6 +54,7 @@ export default function PatientProfileInfo() {
             icon={<LibraryBooksOutlinedIcon style={{ fontSize: "27" }} />}
           />
           <IconButton
+          onClick={handleFinance}
             icon={<AttachMoneyOutlinedIcon style={{ fontSize: "27" }} />}
           />
           <IconButton
