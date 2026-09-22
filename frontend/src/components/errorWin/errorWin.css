@@ -1,0 +1,25 @@
+.error-div{
+    position: absolute;
+    top: 1;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.568);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    
+}
+
+.error-div .error{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 100px;
+    color: var(--text1);
+    background-color:#662222;
+    border-radius: 10px;
+}

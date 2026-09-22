@@ -4,28 +4,29 @@ import Table from "../../../../components/table/table";
 import "./patientsTable.css";
 import {handleArrayState} from "../../../../helperFunctions/handleArrayState";
 import { PatientsContext } from "../../context/patientsContext";
-import { useContext } from "react";
+import { useContext ,useEffect} from "react";
 import { usePatients } from "../../queries/usePatients";
+import { useError } from "../../../../context/errorContext/useError";
 export default function PatientsTable() {
 const {data ,isLoading,isError,error,hasToken} = usePatients()
-
+const {showError} = useError();
  //Context---
   const {
     setSelectedPatientId,
     setSelectedPatientSection,
   } = useContext(PatientsContext);
-  //---------
+    //---------
+  useEffect(()=>{
+    if (!hasToken) {showError("خطا في ايجاد التوكن !!")}
+    if (isError){showError(error.message)}
+      
+
+  },[data ,isLoading,isError,error,hasToken,showError])
+
 if (isLoading) {
   return (
     <div>loading --- </div>
   )
-}
-
-if (isError) {
-    return <div>{error.message}</div>;
-}
-if (!hasToken) {
-    return <div>No authentication token</div>;
 }
 console.log(data)
 // functions 

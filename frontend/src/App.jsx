@@ -8,6 +8,7 @@ import SideBar from "./components/sideBar/sideBar";
 
 import { Routes, Route} from 'react-router-dom';
 import {RouteDefine} from "./routes/RouteDefinitions"
+import ErrorWin from "./components/errorWin/errorWin";
 
 
 
@@ -25,6 +26,8 @@ function App() {
           ))}
         </Routes>
       </div>
+
+      <ErrorWin/>
     </div>
 
   );
