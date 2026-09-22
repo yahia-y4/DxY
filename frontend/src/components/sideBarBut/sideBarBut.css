@@ -7,8 +7,21 @@
   transition: background-color 0.3s ease;
   color: var(--text1);
 }
+
 .sideBarBut:hover {
-    background-color: var(--hover);
-    box-shadow: var(--shadow);
+  background-color: var(--hover);
+  box-shadow: var(--shadow);
 }
 
+.selected-sideBarBut {
+  transition: background-color 0.3s ease;
+  color: var(--text1);
+  background-color: var(--hover);
+  box-shadow: var(--shadow);
+  border-bottom: 1px solid var(--text1);
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  cursor: pointer;
+}
