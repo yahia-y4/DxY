@@ -12,14 +12,12 @@ const api = axios.create({
 api.interceptors.request.use((config) => {
     const token = getToken();
 
-    if (!token) {
-        return Promise.reject(new Error("NO_AUTH_TOKEN"));
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
     }
 
-    config.headers.Authorization = `Bearer ${token}`;
-
     return config;
-})
+});
 
 api.interceptors.response.use(
     (response) => response,

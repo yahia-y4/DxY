@@ -5,18 +5,33 @@ import "./patientsTable.css";
 import {handleArrayState} from "../../../../helperFunctions/handleArrayState";
 import { PatientsContext } from "../../context/patientsContext";
 import { useContext } from "react";
+import { usePatients } from "../../queries/usePatients";
 export default function PatientsTable() {
+const {data ,isLoading,isError,error,hasToken} = usePatients()
+
+ //Context---
   const {
     setSelectedPatientId,
     setSelectedPatientSection,
   } = useContext(PatientsContext);
+  //---------
+if (isLoading) {
+  return (
+    <div>loading --- </div>
+  )
+}
+
+if (isError) {
+    return <div>{error.message}</div>;
+}
+if (!hasToken) {
+    return <div>No authentication token</div>;
+}
+console.log(data)
 // functions 
-
-
   function handleRowClick(patientId) {
     setSelectedPatientId(patientId);
     handleArrayState(setSelectedPatientSection,0,"patientProfile");
-    
   }
   //------
   const columns = [
@@ -27,56 +42,7 @@ export default function PatientsTable() {
     { name: "dirth_date", label: "تاريخ الميلاد" },
     { name: "identity_card_number", label: "رقم الهوية" },
   ];
-  const data = [
-    {
-      id: 1,
-      name: "محمد",
-      father_name: "أحمد",
-      nick_name: "الأسرة",
-      dirth_date: "01/01/1990",
-      identity_card_number: "123456789",
-    },
-    {
-      id: 2,
-      name: "علي",
-      father_name: "حسن",
-      nick_name: "الأسرة",
-      dirth_date: "02/02/1992",
-      identity_card_number: "987654321",
-    },
-    {
-      id: 3,
-      name: "سارة",
-      father_name: "محمد",
-      nick_name: "الأسرة",
-      dirth_date: "03/03/1994",
-      identity_card_number: "456789123",
-    },
-    {
-      id: 4,
-      name: "أحمد",
-      father_name: "علي",
-      nick_name: "الأسرة",
-      dirth_date: "04/04/1996",
-      identity_card_number: "321654987",
-    },
-    {
-      id: 5,
-      name: "ليلى",
-      father_name: "سعيد",
-      nick_name: "الأسرة",
-      dirth_date: "05/05/1998",
-      identity_card_number: "654987321",
-    },
-    {
-      id: 6,
-      name: "خالد",
-      father_name: "عبدالله",
-      nick_name: "الأسرة",
-      dirth_date: "06/06/2000",
-      identity_card_number: "789123456",
-    },
-  ];
+
 
   return (
     <div className="patientsTable">
