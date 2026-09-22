@@ -1,4 +1,4 @@
-import export default api; from "axios";
+import axios from "axios";
 import { getToken, removeToken } from "../auth/token";
 import { url } from "../auth/URL";
 
