@@ -1,7 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useError } from "../context/errorContext/useError";
+import { LoadingContext } from "../context/loadingContext/loadingContext";
 export function useQueryUI({ isLoading, isError, error, hasToken }) {
   const { showError } = useError();
+  const { showLoading, hideLoading } = useContext(LoadingContext);
   useEffect(() => {
     if (!hasToken) {
       showError("خطا في ايجاد التوكن !!");
@@ -9,5 +11,13 @@ export function useQueryUI({ isLoading, isError, error, hasToken }) {
     if (isError) {
       showError(error.message);
     }
-  }, [isLoading, isError, error, hasToken, showError]);
+  }, [isError, error, hasToken, showError]);
+
+  useEffect(() => {
+    if (isLoading) {
+      showLoading();
+    } else {
+      hideLoading();
+    }
+  }, [isLoading, showLoading, hideLoading]);
 }

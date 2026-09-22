@@ -9,7 +9,7 @@ import SideBar from "./components/sideBar/sideBar";
 import { Routes, Route} from 'react-router-dom';
 import {RouteDefine} from "./routes/RouteDefinitions"
 import ErrorWin from "./components/errorWin/errorWin";
-
+import Loading from "./components/loading/loading";
 
 
 
@@ -28,6 +28,7 @@ function App() {
       </div>
 
       <ErrorWin/>
+      <Loading/>
     </div>
 
   );

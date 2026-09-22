@@ -18,12 +18,6 @@ const {data ,isLoading,isError,error,hasToken} = usePatients()
   } = useContext(PatientsContext);
     //---------
 
-
-if (isLoading) {
-  return (
-    <div>loading --- </div>
-  )
-}
 console.log(data)
 // functions 
   function handleRowClick(patientId) {
