@@ -4,15 +4,25 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import InfoWin from "../../../../components/infoWin/infoWin";
 import ShowToothWin from "../../../../components/showToothWin/showToothWin";
-
+import { useSession } from "../../context/useSession";
+import { handleArrayState } from "../../../../helperFunctions/handleArrayState";
+import IconButton from "../../../../components/iconButton/iconButton";
 export default function SessionInfo() {
+  const {selectedSession,setCurrentSession} = useSession()
+  console.log(selectedSession)
+  //functions
+  function back(){
+    handleArrayState(setCurrentSession,0,"sessionsTable")
+  }
+  //------
   return (
     <div className="session-Info">
       <section className="section-1">
         <div className="Control-buts">
-          <AppRegistrationOutlinedIcon style={{ fontSize: "27" }} />
-          <DeleteOutlineOutlinedIcon style={{ fontSize: "27" }} />
-          <ArrowBackIcon style={{ fontSize: "27" }} />
+    
+          <IconButton icon={<AppRegistrationOutlinedIcon style={{ fontSize: "27" }} />}/>
+          <IconButton icon={ <DeleteOutlineOutlinedIcon style={{ fontSize: "27" }} />}/>
+          <IconButton onClick={back} icon={<ArrowBackIcon style={{ fontSize: "27" }} />}/>
         </div>
         <div className="content">
             <InfoWin  data={"معاينة"}/>

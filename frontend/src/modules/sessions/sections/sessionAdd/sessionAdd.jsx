@@ -5,8 +5,16 @@ import Input from "../../../../components/input/input"
 import Select from "../../../../components/select/select"
 import Textarea from "../../../../components/textarea/textarea"
 import "./sessionAdd.css"
-
+import { useSession } from "../../context/useSession"
+import { handleArrayState } from "../../../../helperFunctions/handleArrayState"
 export default function SessionAdd() {
+    const{setCurrentSession} = useSession()
+
+    //functions
+    function back(){
+        handleArrayState(setCurrentSession,0,"sessionsTable")
+    }
+    //
     return(
         <div className="sessionAdd">
             <section className="section-1">
@@ -18,7 +26,7 @@ export default function SessionAdd() {
                 <div className="add-buts">
                     <Button lable={"اضافة"}/>
                     <Button lable={"محو"}/>
-                    <Button lable={"الغاء"}/>
+                    <Button onClick={back} lable={"الغاء"}/>
                 </div>
                 
             </section>

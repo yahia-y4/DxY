@@ -2,6 +2,8 @@ import "./sessionsTable.css";
 import Table from "../../../../components/table/table";
 import AddButton from "../../../../components/addButton/addButton";
 import Search from "../../../../components/search/search";
+import { useSession } from "../../context/useSession";
+import { handleArrayState } from "../../../../helperFunctions/handleArrayState";
 export default function SectionsTable() {
   const columns = [
     { name: "id", label: "ID" },
@@ -20,12 +22,23 @@ export default function SectionsTable() {
     {id: 5, name: "فاطمة", father_name: "حسن", nick_name: "ام حسن", sections_name: "جلسة علاج طبيعي", date: "2023-01-05"},
   ];
   
+const {setCurrentSession,setSelectedSession} = useSession()
+
+  // functions
+  function onRowClick(session) {
+    setSelectedSession(session)
+    handleArrayState(setCurrentSession,0,"sessionInfo")
+  }
+  function addSession(){
+    handleArrayState(setCurrentSession,0,"sessionAdd")
+  }
+  //
  
   return (
     <div className="sessionsTable">
       <Search w={"90%"} />
-      <Table columns={columns} data={data} w={"90%"} />
-      <AddButton />
+      <Table onRowClick={onRowClick} columns={columns} data={data} w={"90%"} />
+      <AddButton onClick={addSession} />
     </div>
   );
 }
