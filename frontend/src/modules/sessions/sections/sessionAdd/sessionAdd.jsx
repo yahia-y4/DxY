@@ -22,7 +22,7 @@ export default function SessionAdd() {
                     <Input label={"اسم الجلسة"} />
                     <Select label={"المريض"}/>
                 </form>
-                <AddToothWin w={"400px"} h={"500px"} title={"السن"}/>
+                <AddToothWin number={1} horizontal={"left"} vertical={"top"} w={"400px"} h={"500px"} title={"السن"}/>
                 <div className="add-buts">
                     <Button lable={"اضافة"}/>
                     <Button lable={"محو"}/>
