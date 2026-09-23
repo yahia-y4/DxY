@@ -6,14 +6,13 @@ import {handleArrayState} from "../../../../helperFunctions/handleArrayState";
 import { PatientsContext } from "../../context/patientsContext";
 import { useContext } from "react";
 import { usePatients } from "../../queries/usePatients";
-
 import { useQueryUI } from "../../../../hooks/useQueryUI";
 export default function PatientsTable() {
 const {data ,isLoading,isError,error,hasToken} = usePatients()
   useQueryUI({isLoading,isError,error,hasToken})
  //Context---
   const {
-    setSelectedPatientId,
+    setSelectedPatient,
     setSelectedPatientSection,
   } = useContext(PatientsContext);
     //---------
@@ -21,7 +20,7 @@ const {data ,isLoading,isError,error,hasToken} = usePatients()
 console.log(data)
 // functions 
   function handleRowClick(patient) {
-    setSelectedPatientId(patient.id);
+    setSelectedPatient(patient);
     handleArrayState(setSelectedPatientSection,0,"patientProfile");
   }
   //------

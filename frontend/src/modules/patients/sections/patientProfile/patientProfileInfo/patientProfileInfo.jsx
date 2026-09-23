@@ -9,16 +9,12 @@ import InfoWin from "../../../../../components/infoWin/infoWin";
 import { handleArrayState } from "../../../../../helperFunctions/handleArrayState";
 import { PatientsContext } from "../../../context/patientsContext";
 import { useContext } from "react";
-import { useQueryClient } from "@tanstack/react-query";
+
 import IconButton from "../../../../../components/iconButton/iconButton";
 export default function PatientProfileInfo() {
-  const { setSelectedPatientSection ,selectedPatientId} = useContext(PatientsContext);
+  const { setSelectedPatientSection ,selectedPatient} = useContext(PatientsContext);
 
-const queryClient = useQueryClient();
-const patients = queryClient.getQueryData(["patients"]);
-const patient = patients?.find(
-    (patient) => patient.id === selectedPatientId
-);
+
 
   //functions
   function back() {
@@ -70,19 +66,19 @@ const patient = patients?.find(
           />
         </div>
         <div className="section-content">
-          <InfoWin  data={`${patient.name}  ${patient.father_name}  ${patient.nick_name} `} />
-          {patient.identity_card_number && <InfoWin title={"رقم الهوية"} data={patient.identity_card_number} />}
-          {patient.dirth_date && <InfoWin title={"تاريخ الميلاد"} data={patient.dirth_date} />}
-          <InfoWin title={"الحالة"} data={patient.status} />
-          <InfoWin title={"الديون"} data={`${patient.outstanding_balance} $`} />
+          <InfoWin  data={`${selectedPatient.name}  ${selectedPatient.father_name}  ${selectedPatient.nick_name} `} />
+          {selectedPatient.identity_card_number && <InfoWin title={"رقم الهوية"} data={selectedPatient.identity_card_number} />}
+          {selectedPatient.dirth_date && <InfoWin title={"تاريخ الميلاد"} data={selectedPatient.dirth_date} />}
+          <InfoWin title={"الحالة"} data={selectedPatient.status} />
+          <InfoWin title={"الديون"} data={`${selectedPatient.outstanding_balance} $`} />
         
         </div>
       </section>
       <section className="section-2">
-        <InfoWin lable={"الحساسية"} data={patient.allergies} w={"100%"} h={"150px"} />
-        <InfoWin lable={"الامراض المزمنة"} data={patient.chronic_diseases} w={"100%"} h={"150px"} />
-        <InfoWin lable={"الادوية الحالية"} data={patient.current_medications} w={"100%"} h={"150px"} />
-        <InfoWin lable={"الوصف"} data={patient.description} w={"100%"} h={"150px"} />
+        <InfoWin lable={"الحساسية"} data={selectedPatient.allergies} w={"100%"} h={"150px"} />
+        <InfoWin lable={"الامراض المزمنة"} data={selectedPatient.chronic_diseases} w={"100%"} h={"150px"} />
+        <InfoWin lable={"الادوية الحالية"} data={selectedPatient.current_medications} w={"100%"} h={"150px"} />
+        <InfoWin lable={"الوصف"} data={selectedPatient.description} w={"100%"} h={"150px"} />
       </section>
     </div>
   );
