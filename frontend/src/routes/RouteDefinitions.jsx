@@ -8,6 +8,7 @@ import StatisticsPage from "../modules/statistics/statisticsPage/statisticsPage"
 
 //Providers
 import { PatientsProvider } from "../modules/patients/context/patientsProvider";
+import { SessionsProvider } from "../modules/sessions/context/sessionsProvider";
 //-------
 
 export const RouteDefine = [
@@ -20,7 +21,14 @@ export const RouteDefine = [
       </PatientsProvider>
     ),
   },
-  { path: "/sessions", element: <SessionsPage /> },
+  {
+    path: "/sessions",
+    element: (
+      <SessionsProvider>
+        <SessionsPage />
+      </SessionsProvider>
+    ),
+  },
   { path: "/treatmentPlans", element: <TreatmentPlansPage /> },
   { path: "/appointments", element: <AppointmentsPage /> },
   { path: "/finance", element: <FinancePage /> },
