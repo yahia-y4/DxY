@@ -5,9 +5,9 @@ export function WarningProvider({ children }) {
     const [warning, setWarning] = useState("");
     const [warningFun, setWarningFun] = useState(null);
 
-    const showWarning = (fun) => {
+    const showWarning = (text,fun) => {
         setWarningFun(() => fun);
-        setWarning(true);
+        setWarning(text);
     };
 
     const hideWarning = () => {

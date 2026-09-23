@@ -13,7 +13,7 @@ export default function Warning() {
   return (
     <div className="warning-div">
       <div className="warning-win">
-        <p>نص التحذير</p>
+        <p>{warning}</p>
         <div className="warning-buts">
           <Button onClick={handleConfirm} lable={"موافق"} />
           <Button onClick={hideWarning} lable={"الغاء"} />
