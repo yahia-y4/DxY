@@ -20,8 +20,8 @@ const {data ,isLoading,isError,error,hasToken} = usePatients()
 
 console.log(data)
 // functions 
-  function handleRowClick(patientId) {
-    setSelectedPatientId(patientId);
+  function handleRowClick(patient) {
+    setSelectedPatientId(patient.id);
     handleArrayState(setSelectedPatientSection,0,"patientProfile");
   }
   //------
