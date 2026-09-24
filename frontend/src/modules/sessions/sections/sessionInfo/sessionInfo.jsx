@@ -6,6 +6,7 @@ import InfoWin from "../../../../components/infoWin/infoWin";
 import ShowToothWin from "../../../../components/showToothWin/showToothWin";
 import { useSession } from "../../context/useSession";
 import { handleArrayState } from "../../../../helperFunctions/handleArrayState";
+import { formatDate } from "../../../../helperFunctions/formatDate";
 import IconButton from "../../../../components/iconButton/iconButton";
 export default function SessionInfo() {
   const {selectedSession,setCurrentSession} = useSession()
@@ -29,17 +30,17 @@ export default function SessionInfo() {
           <IconButton onClick={back} icon={<ArrowBackIcon style={{ fontSize: "27" }} />}/>
         </div>
         <div className="content">
-            <InfoWin  data={"معاينة"}/>
-            <InfoWin  data={"يحيى محمد الحمود"}/>
-            <InfoWin  data={"2026/9/15"}/>
-            <ShowToothWin number={"7"} horizontal={"left"} vertical={"bottom"}/>
+            <InfoWin  data={selectedSession.name}/>
+            <InfoWin  data={`${selectedSession.patient.name} ${selectedSession.patient.father_name} ${selectedSession.patient.nick_name}`}/>
+            <InfoWin  data={formatDate(selectedSession.created_at)}/>
+            <ShowToothWin number={selectedSession.teeth_number} horizontal={selectedSession.teeth_horizontal} vertical={selectedSession.teeth_vertical}/>
         </div>
       </section>
       <section className="section-2">
-        <InfoWin lable={"التشخيص : "} h={"150px"} w={"100%"}/>
-        <InfoWin lable={"المعالجة : "} h={"150px"} w={"100%"}/>
-        <InfoWin lable={"الادوية الموصوفة : "} h={"150px"} w={"100%"}/>
-        <InfoWin lable={"ملاحظة : "} h={"150px"} w={"100%"}/>
+        <InfoWin lable={"التشخيص : "} data={selectedSession.diagnosis} h={"150px"} w={"100%"}/>
+        <InfoWin lable={"المعالجة : "} data={selectedSession.treatment} h={"150px"} w={"100%"}/>
+        <InfoWin lable={"الادوية الموصوفة : "} data={selectedSession.prescribed_medication} h={"150px"} w={"100%"}/>
+        <InfoWin lable={"الوصف : "} data={selectedSession.description} h={"150px"} w={"100%"}/>
       </section>
     </div>
   );
