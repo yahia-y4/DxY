@@ -31,6 +31,7 @@ public function index(Request $request)
         $treatmentSession->teeth_vertical = $request->teeth_vertical;
         $treatmentSession->teeth_horizontal = $request->teeth_horizontal;
         $treatmentSession->save();
+        $treatmentSession->load('patient');
         return response()->json(['message' => 'Treatment session created successfully', 'treatment_session' => $treatmentSession], 201);
     }
 
@@ -49,6 +50,7 @@ public function index(Request $request)
         $treatmentSession->teeth_vertical = $request->teeth_vertical;
         $treatmentSession->teeth_horizontal = $request->teeth_horizontal;
         $treatmentSession->save();
+        $treatmentSession->load('patient');
         return response()->json(['message' => 'Treatment session updated successfully', 'treatment_session' => $treatmentSession], 200);
     }
 
