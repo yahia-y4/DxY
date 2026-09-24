@@ -8,10 +8,28 @@ import { useSession } from "../../context/useSession";
 import { handleArrayState } from "../../../../helperFunctions/handleArrayState";
 import { formatDate } from "../../../../helperFunctions/formatDate";
 import IconButton from "../../../../components/iconButton/iconButton";
+import { useDeleteSession } from "../../queries/useDeleteSession";
+import { useWarning } from "../../../../context/warningContext/useWarning";
 export default function SessionInfo() {
   const {selectedSession,setCurrentSession} = useSession()
-  console.log(selectedSession)
+ const{showWarning} = useWarning()
+   const deleteSession = useDeleteSession()
+
+
+
   //functions
+  function handleDelete(){
+    deleteSession.mutate(selectedSession.id,{
+      onSettled:()=>{
+        back();
+      }
+    })
+  }
+  function handleDeleteClick(){
+    const deleteText ="هل تريد حذف هذه الجلسة ؟؟"
+    showWarning(deleteText,handleDelete)
+
+  }
   function back(){
     handleArrayState(setCurrentSession,0,"sessionsTable")
   }
@@ -26,7 +44,7 @@ export default function SessionInfo() {
         <div className="Control-buts">
     
           <IconButton onClick={edit} icon={<AppRegistrationOutlinedIcon style={{ fontSize: "27" }} />}/>
-          <IconButton icon={ <DeleteOutlineOutlinedIcon style={{ fontSize: "27" }} />}/>
+          <IconButton onClick={handleDeleteClick} icon={ <DeleteOutlineOutlinedIcon style={{ fontSize: "27" }} />}/>
           <IconButton onClick={back} icon={<ArrowBackIcon style={{ fontSize: "27" }} />}/>
         </div>
         <div className="content">

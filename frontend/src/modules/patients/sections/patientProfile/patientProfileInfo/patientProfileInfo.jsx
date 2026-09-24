@@ -42,6 +42,7 @@ export default function PatientProfileInfo() {
       }
     })
   }
+  
 
     function handleDeleteOnClick(){
       const deleteText ="هل تريد حذف هذا المريض بشكل كامل مع كل المعلومات المرتبطه به؟";
