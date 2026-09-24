@@ -1,4 +1,5 @@
 
 export const urlRoute = {
-patients:"/patients"
+patients:"/patients",
+sessions:"/sessions"
 }

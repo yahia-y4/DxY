@@ -3,7 +3,9 @@ import Table from "../../../../components/table/table";
 import AddButton from "../../../../components/addButton/addButton";
 import Search from "../../../../components/search/search";
 import { useSession } from "../../context/useSession";
+import { useGetSessions } from "../../queries/useGetSessions";
 import { handleArrayState } from "../../../../helperFunctions/handleArrayState";
+import { useQueryUI } from "../../../../hooks/useQueryUI";
 export default function SectionsTable() {
   const columns = [
     { name: "id", label: "ID" },
@@ -14,15 +16,10 @@ export default function SectionsTable() {
     { name: "date", label: "تاريخ الجلسة" },
  
   ];
-  const data = [
-    {id: 1, name: "محمد", father_name: "احمد", nick_name: "ابو احمد", sections_name: "جلسة علاج طبيعي", date: "2023-01-01"},
-    {id: 2, name: "علي", father_name: "حسن", nick_name: "ابو حسن", sections_name: "جلسة علاج طبيعي", date: "2023-01-02"},
-    {id: 3, name: "سارة", father_name: "محمد", nick_name: "ام محمد", sections_name: "جلسة علاج طبيعي", date: "2023-01-03"},
-    {id: 4, name: "أحمد", father_name: "علي", nick_name: "ابو علي", sections_name: "جلسة علاج طبيعي", date: "2023-01-04"},
-    {id: 5, name: "فاطمة", father_name: "حسن", nick_name: "ام حسن", sections_name: "جلسة علاج طبيعي", date: "2023-01-05"},
-  ];
-  
+
 const {setCurrentSession,setSelectedSession} = useSession()
+const {data ,isLoading,isError,error,hasToken} = useGetSessions()
+useQueryUI({isLoading,isError,error,hasToken})
 
   // functions
   function onRowClick(session) {
