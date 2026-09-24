@@ -22,10 +22,10 @@
 }
 .treatmentPlanInfo .section-1 .content-1{
     width: 100%;
-    height: 30%;
+    height: 40%;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap:15px;
     align-items: center;
     justify-content: center;
 
@@ -36,5 +36,4 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
 }

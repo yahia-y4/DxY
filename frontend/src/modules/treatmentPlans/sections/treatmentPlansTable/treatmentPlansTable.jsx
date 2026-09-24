@@ -1,27 +1,43 @@
-import "./treatmentPlansTable.css"
-import Table from "../../../../components/table/table"
+import "./treatmentPlansTable.css";
+import Table from "../../../../components/table/table";
 import Search from "../../../../components/search/search";
+import { useGetTreatmentPlans } from "../../queries/useGetTreatmentPlans";
+import { useQueryUI } from "../../../../hooks/useQueryUI";
+import { formatDate } from "../../../../helperFunctions/formatDate";
+import { useTreatmentPlan } from "../../context/useTreatmentPlan";
+export default function TreatmentPlansTable() {
+  const { setCurrentTreatmentPlan, setSelectedTreatmentPlan } =
+    useTreatmentPlan();
+  const { data, isLoading, isError, error, hasToken } = useGetTreatmentPlans();
+  useQueryUI({ isLoading, isError, error, hasToken });
 
-export default function TreatmentPlansTable(){
+  //functions
+  function onRowClick(treatmentPlan) {
+    setSelectedTreatmentPlan(treatmentPlan);
+    setCurrentTreatmentPlan("treatmentPlanInfo");
+  }
+  //--------
+
+  //------------
   const columns = [
-    
     { name: "name", label: "الخطة" },
-    { name: "patient", label: "المريض" }
-  
-  ];
-  const data = [
-    { id: 1, name: "زراعة 4 زرعات " , patient:"يحيى محمد الحمود"},
-    { id: 1, name: "معالجة لبية للرحى الثانية ", patient:"احمد عدنان جاسم"},
-    { id: 1, name: "زراعة 3 زرعات وتطعيم عظمي" ,patient:"محمد فاضل احمد"}
-   
-  
-  ];
+    {
+      name: (treatmentPlan) => {
+        const name = `${treatmentPlan.patient.name} ${treatmentPlan.patient.father_name} ${treatmentPlan.patient.nick_name}`;
+        return name;
+      },
+      label: "المريض",
+    },
 
-    return(
-        <div className="treatmentPlans-Table">
-            <Search w={"90%"}/>
-            <Table data={data} columns={columns} w={"90%"}/>
-           
-        </div>
-    )
+    {
+      name: (treatmentPlan) => formatDate(treatmentPlan.created_at),
+      label: "تاريخ بدء الخطة",
+    },
+  ];
+  return (
+    <div className="treatmentPlans-Table">
+      <Search w={"90%"} />
+      <Table onRowClick={onRowClick} data={data} columns={columns} w={"90%"} />
+    </div>
+  );
 }
