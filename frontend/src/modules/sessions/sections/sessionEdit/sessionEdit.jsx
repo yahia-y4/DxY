@@ -8,9 +8,12 @@ import { useState } from "react";
 import { chooseToothState } from "../../../../helperFunctions/chooseToothState";
 import { handleInputs } from "../../../../helperFunctions/handleInputs";
 import { handleArrayState } from "../../../../helperFunctions/handleArrayState";
+import { useEditSession } from "../../queries/useEditSession";
+
 export default function SessionEdit() {
-  const { selectedSession, setCurrentSession } = useSession();
+  const { selectedSession ,setSelectedSession, setCurrentSession } = useSession();
   const [formData, setFormData] = useState({
+    id:selectedSession.id,
     treatment_plan_id: null,
     name: selectedSession.name,
     description: selectedSession.description,
@@ -21,12 +24,40 @@ export default function SessionEdit() {
     teeth_vertical: selectedSession.teeth_vertical,
     teeth_horizontal: selectedSession.teeth_horizontal,
   });
+
+
+const editSession = useEditSession()
+
+
   //functions-------
+function handleEditSession(){
+  editSession.mutate(formData,{
+    onSuccess:(session)=>{
+      setSelectedSession(session)
+      back();
+    }
+  })
+}
+
   function onToothClick(tooth) {
     chooseToothState(setFormData, formData, tooth);
   }
   function back() {
     handleArrayState(setCurrentSession, 0, "sessionInfo");
+  }
+  function emptyFormData(){
+    setFormData({
+    id:selectedSession.id,
+    treatment_plan_id: null,
+    name: "",
+    description: "",
+    diagnosis: "",
+    treatment: "",
+    prescribed_medication: "",
+    teeth_number: 0,
+    teeth_vertical: "",
+    teeth_horizontal: "",
+    })
   }
   //---------
 
@@ -51,8 +82,8 @@ export default function SessionEdit() {
           title={"السن"}
         />
         <div className="add-buts">
-          <Button lable={"اضافة"} />
-          <Button lable={"محو"} />
+          <Button onClick={handleEditSession} lable={"تعديل"} />
+          <Button onClick={emptyFormData} lable={"محو"} />
           <Button onClick={back} lable={"الغاء"} />
         </div>
       </section>
