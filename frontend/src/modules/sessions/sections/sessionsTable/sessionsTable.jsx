@@ -9,11 +9,11 @@ import { useQueryUI } from "../../../../hooks/useQueryUI";
 export default function SectionsTable() {
   const columns = [
     { name: "id", label: "ID" },
-    { name: "name", label: "الاسم" },
-    { name: "father_name", label: "الاب" },
-    { name: "nick_name", label: "الكنية" },
-    { name: "sections_name", label: "الجلسة" },
-    { name: "date", label: "تاريخ الجلسة" },
+    { name: (session)=>session?.patient.name, label: "الاسم" },
+    { name: (session)=>session?.patient.father_name, label: "الاب" },
+    { name: (session)=>session?.patient.nick_name, label: "الكنية" },
+    { name: "name", label: "الجلسة" },
+    { name: "created_at", label: "تاريخ الجلسة" },
  
   ];
 
