@@ -61,7 +61,7 @@ public function index(Request $request)
             return response()->json(['message' => 'Treatment session not found'], 404);
         }
         $treatmentSession->delete();
-        return response()->json(['message' => 'Treatment session deleted successfully'], 200);
+        return response()->json(['message' => 'Treatment session deleted successfully','treatment_sessions'=>$treatmentSession], 200);
     }
 
     public function getSessionsByPatientId($id)
