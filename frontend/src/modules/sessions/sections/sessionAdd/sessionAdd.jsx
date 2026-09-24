@@ -10,11 +10,12 @@ import { chooseToothState } from "../../../../helperFunctions/chooseToothState";
 import {usePatients} from "../../../patients/queries/usePatients";
 import { useQueryUI } from "../../../../hooks/useQueryUI";
 import { handleInputs } from "../../../../helperFunctions/handleInputs";
+import { useAddSession } from "../../queries/useAddSession";
 import { useState } from "react";
 export default function SessionAdd() {
   const { setCurrentSession } = useSession();
   const [formData, setFormData] = useState({
-    patient_id: 1,
+    patient_id: 0,
     treatment_plan_id: null,
     name:"",
     description: "",
@@ -28,14 +29,40 @@ export default function SessionAdd() {
 
   const {data ,isLoading,isError,error,hasToken} = usePatients()
     useQueryUI({isLoading,isError,error,hasToken})
+    const addSession = useAddSession()
+    useQueryUI(addSession)
   //functions
+  function handleAddSession(){
+    addSession.mutate(formData,{
+      onSuccess:()=>{
+        console.log("Session");
+        back();
+      }
+    })
+  }
   function back() {
     handleArrayState(setCurrentSession, 0, "sessionsTable");
   }
   function onToothClick(tooth){
     chooseToothState(setFormData,formData,tooth)
   }
-  console.log(formData)
+
+  function emptyFormData(){
+    setFormData({
+    patient_id: 0,
+    treatment_plan_id: null,
+    name:"",
+    description: "",
+    diagnosis: "",
+    treatment: "",
+    prescribed_medication: "",
+    teeth_number: 0,
+    teeth_vertical: "",
+    teeth_horizontal: "",
+    })
+  }
+
+
   //
   return (
     <div className="sessionAdd">
@@ -53,8 +80,8 @@ export default function SessionAdd() {
           title={"السن"}
         />
         <div className="add-buts">
-          <Button lable={"اضافة"} />
-          <Button lable={"محو"} />
+          <Button onClick={handleAddSession} lable={"اضافة"} />
+          <Button onClick={emptyFormData} lable={"محو"} />
           <Button onClick={back} lable={"الغاء"} />
         </div>
       </section>
