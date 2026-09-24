@@ -12,7 +12,7 @@ class TreatmentSessionController extends Controller
 public function index(Request $request)
     {
         $doctorId = $request->user()->id;
-        $treatmentSessions = TreatmentSession::where('doctor_id', $doctorId)->get();
+        $treatmentSessions = TreatmentSession::where('doctor_id', $doctorId)->with("patient")->get();
         return response()->json(['treatment_sessions' => $treatmentSessions], 200);
     }
 
@@ -75,3 +75,5 @@ public function index(Request $request)
     }
 
 }
+
+ 
