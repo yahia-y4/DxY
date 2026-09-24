@@ -1,0 +1,43 @@
+.SessionEdit-div{
+    width: 95%;
+    height: 95%;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+
+.SessionEdit-div .section-1{
+  
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  
+    
+}
+.SessionEdit-div .section-1 .form{
+    width: 80%;
+       display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    
+   
+}
+
+.SessionEdit-div .section-1 .add-buts{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.SessionEdit-div .section-2{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+
+

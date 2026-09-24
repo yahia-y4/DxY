@@ -14,13 +14,17 @@ export default function SessionInfo() {
   function back(){
     handleArrayState(setCurrentSession,0,"sessionsTable")
   }
+  function edit(){
+        handleArrayState(setCurrentSession,0,"sessionEdit")
+
+  }
   //------
   return (
     <div className="session-Info">
       <section className="section-1">
         <div className="Control-buts">
     
-          <IconButton icon={<AppRegistrationOutlinedIcon style={{ fontSize: "27" }} />}/>
+          <IconButton onClick={edit} icon={<AppRegistrationOutlinedIcon style={{ fontSize: "27" }} />}/>
           <IconButton icon={ <DeleteOutlineOutlinedIcon style={{ fontSize: "27" }} />}/>
           <IconButton onClick={back} icon={<ArrowBackIcon style={{ fontSize: "27" }} />}/>
         </div>

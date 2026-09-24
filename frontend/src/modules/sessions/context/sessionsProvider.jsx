@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export function SessionsProvider({children}) {
     const [selectedSession,setSelectedSession] = useState({})
-    const [currentSession,setCurrentSession] = useState(["sessionsTable"]) // [sessionsTable | sessionAdd | sessionInfo  ,  ... ]
+    const [currentSession,setCurrentSession] = useState(["sessionsTable"]) // [sessionsTable | sessionAdd | sessionInfo  | sessionEdit  ]
     return(
         <SessionsContext.Provider value={{selectedSession,setSelectedSession,currentSession,setCurrentSession}}>
             {children}
