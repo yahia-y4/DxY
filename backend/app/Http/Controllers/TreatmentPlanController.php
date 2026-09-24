@@ -11,7 +11,7 @@ class TreatmentPlanController extends Controller
     public function index(Request $request)
     {
         $doctorId = $request->user()->id;
-        $treatmentPlans = TreatmentPlan::where('doctor_id', $doctorId)->get();
+        $treatmentPlans = TreatmentPlan::where('doctor_id', $doctorId)->with("patient")->get();
         return response()->json(['treatment_plans' => $treatmentPlans], 200);
     }
     public function store(Request $request)
@@ -23,6 +23,7 @@ class TreatmentPlanController extends Controller
         $treatmentPlan->name = $request->name;
         $treatmentPlan->description = $request->description;
         $treatmentPlan->save();
+        $treatmentPlan->load("patient");
         return response()->json(['message' => 'Treatment plan created successfully', 'treatment_plan' => $treatmentPlan], 201);
 
     }
@@ -36,6 +37,7 @@ class TreatmentPlanController extends Controller
         $treatmentPlan->name = $request->name;
         $treatmentPlan->description = $request->description;
         $treatmentPlan->save();
+        $treatmentPlan->load("patient");
         return response()->json(['message' => 'Treatment plan updated successfully', 'treatment_plan' => $treatmentPlan], 200);
     }
 
