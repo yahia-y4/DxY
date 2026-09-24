@@ -9,6 +9,7 @@ import StatisticsPage from "../modules/statistics/statisticsPage/statisticsPage"
 //Providers
 import { PatientsProvider } from "../modules/patients/context/patientsProvider";
 import { SessionsProvider } from "../modules/sessions/context/sessionsProvider";
+import { TreatmentPlansProvider } from "../modules/treatmentPlans/context/treatmentPlansProvider";
 //-------
 
 export const RouteDefine = [
@@ -29,7 +30,14 @@ export const RouteDefine = [
       </SessionsProvider>
     ),
   },
-  { path: "/treatmentPlans", element: <TreatmentPlansPage /> },
+  {
+    path: "/treatmentPlans",
+    element: (
+      <TreatmentPlansProvider>
+        <TreatmentPlansPage />
+      </TreatmentPlansProvider>
+    ),
+  },
   { path: "/appointments", element: <AppointmentsPage /> },
   { path: "/finance", element: <FinancePage /> },
   { path: "/statistics", element: <StatisticsPage /> },
