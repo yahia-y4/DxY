@@ -9,8 +9,8 @@ class AppointmentController extends Controller
 {
 
 public function index(Request $request){
-    $appointments = Appointment::where('doctor_id', $request->user()->id)->get();
-    return response()->json($appointments);
+    $appointments = Appointment::where('doctor_id', $request->user()->id)->with("patient")->get();
+    return response()->json(["appointments"=>$appointments]);
 }
 
 public function store(Request $request){
@@ -23,8 +23,9 @@ public function store(Request $request){
     $appointment->vist_reason = $request->vist_reason;
     $appointment->note = $request->note;
     $appointment->save();
+    $appointment->load("patient");
 
-    return response()->json(['message' => 'Appointment created successfully'], 201);
+    return response()->json(['message' => 'Appointment created successfully','appointment'=>$appointment], 201);
 }
 
 public function edit(Request $request, $id){
@@ -38,8 +39,9 @@ public function edit(Request $request, $id){
     $appointment->vist_reason = $request->vist_reason;
     $appointment->note = $request->note;
     $appointment->save();
+    $appointment->load("patient");
 
-    return response()->json(['message' => 'Appointment updated successfully']);
+    return response()->json(['message' => 'Appointment updated successfully','appointment'=>$appointment]);
 
 
     
@@ -64,8 +66,9 @@ public function updateStatus(Request $request, $id){
 
     $appointment->status = $request->status;
     $appointment->save();
+    
 
-    return response()->json(['message' => 'Appointment status updated successfully']);
+    return response()->json(['message' => 'Appointment status updated successfully','appointment'=>$appointment]);
 }
 
 }
