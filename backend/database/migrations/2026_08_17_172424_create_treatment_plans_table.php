@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreignId("patient_id")->constrained("patients");
             $table->string("name");
             $table->string("description")->nullable();
+            $table->enum('status', ['cancelled', 'processing', 'finished'])->default('processing');
+
         });
     }
 
