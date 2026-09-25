@@ -8,7 +8,7 @@ import { useQueryUI } from "../../../../hooks/useQueryUI";
 import { useState } from "react";
 import { handleInputs } from "../../../../helperFunctions/handleInputs";
 export default function AppointmentAdd() {
-  const [formData, setFromData] = useState({
+  const [formData, setFormData] = useState({
     patient_id: "",
     appointment_date: "",
     hour: "",
@@ -30,7 +30,7 @@ export default function AppointmentAdd() {
   }
 
   function emptyData() {
-    setFromData({
+    setFormData({
       patient_id: "",
       appointment_date: "",
       hour: "",
@@ -43,7 +43,7 @@ export default function AppointmentAdd() {
   return (
     <div className="appointmentAdd">
       <Select
-        onChange={(e) => handleInputs(setFromData, e)}
+        onChange={(e) => handleInputs(setFormData, e)}
         name={"patient_id"}
         value={formData.patient_id}
         patients={patients.data}
@@ -51,14 +51,14 @@ export default function AppointmentAdd() {
         label={"المريض"}
       />
       <Input
-        onChange={(e) => handleInputs(setFromData, e)}
+        onChange={(e) => handleInputs(setFormData, e)}
         name={"vist_reason"}
         value={formData.vist_reason}
         w={"90%"}
         label={"سبب الموعد"}
       />
       <Input
-        onChange={(e) => handleInputs(setFromData, e)}
+        onChange={(e) => handleInputs(setFormData, e)}
         name={"appointment_date"}
         value={formData.appointment_date}
         w={"90%"}
@@ -66,7 +66,7 @@ export default function AppointmentAdd() {
         label={"تاريخ الحضور"}
       />
       <Input
-        onChange={(e) => handleInputs(setFromData, e)}
+        onChange={(e) => handleInputs(setFormData, e)}
         name={"hour"}
         value={formData.hour}
         w={"90%"}

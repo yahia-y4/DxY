@@ -15,6 +15,10 @@ export default function AppointmentInfo() {
   function back() {
     setAppoSection("appoAdd");
   }
+  function edit(){
+        setAppoSection("appoEdit");
+
+  }
     function handleStatus(status) {
     let _status = "انتظار";
     if (status == "approved") _status = "تم";
@@ -25,7 +29,7 @@ export default function AppointmentInfo() {
   return (
     <div className="appointmentInfo">
       <div className="control-buts">
-        <IconButton icon={<AppRegistrationOutlinedIcon />} />
+        <IconButton onClick={edit} icon={<AppRegistrationOutlinedIcon />} />
         <IconButton icon={<DeleteOutlineOutlinedIcon />} />
         <IconButton icon={<CheckCircleOutlinedIcon />} />
         <IconButton icon={<CancelOutlinedIcon />} />

@@ -8,10 +8,11 @@ import AirlineSeatFlatAngledOutlinedIcon from "@mui/icons-material/AirlineSeatFl
 import LibraryBooksOutlinedIcon from "@mui/icons-material/LibraryBooksOutlined";
 import AssignmentOutlinedIcon from "@mui/icons-material/AssignmentOutlined";
 import AttachMoneyOutlinedIcon from "@mui/icons-material/AttachMoneyOutlined";
-import PollOutlinedIcon from "@mui/icons-material/PollOutlined";
+// import PollOutlinedIcon from "@mui/icons-material/PollOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 export default function SideBar() {
   const page = useLocation().pathname;
+  
   return (
     <div className="sideBar">
       <Link to="/" style={{ textDecoration: "none" }}>
@@ -36,9 +37,9 @@ export default function SideBar() {
       <Link to="/finance" style={{textDecoration:"none"}}>
         <SideBarBut selected={page =="/finance"?true:false} icon={<AttachMoneyOutlinedIcon />} text="المالية" />
       </Link>
-      <Link to="/statistics" style={{textDecoration:"none"}}>
+      {/* <Link to="/statistics" style={{textDecoration:"none"}}>
         <SideBarBut selected={page =="/statistics"?true:false} icon={<PollOutlinedIcon />} text="الاحصائيات" />
-      </Link>
+      </Link> */}
       <Link to="/account" style={{textDecoration:"none"}}>
         <SideBarBut selected={page =="/account"?true:false} icon={<PersonOutlineOutlinedIcon />} text="الحساب" />
       </Link>
