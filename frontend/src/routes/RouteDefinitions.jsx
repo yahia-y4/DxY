@@ -10,6 +10,7 @@ import StatisticsPage from "../modules/statistics/statisticsPage/statisticsPage"
 import { PatientsProvider } from "../modules/patients/context/patientsProvider";
 import { SessionsProvider } from "../modules/sessions/context/sessionsProvider";
 import { TreatmentPlansProvider } from "../modules/treatmentPlans/context/treatmentPlansProvider";
+import { AppoProvider } from "../modules/appointments/context/appoProvider";
 //-------
 
 export const RouteDefine = [
@@ -38,7 +39,14 @@ export const RouteDefine = [
       </TreatmentPlansProvider>
     ),
   },
-  { path: "/appointments", element: <AppointmentsPage /> },
+  {
+    path: "/appointments",
+    element: (
+      <AppoProvider>
+        <AppointmentsPage />
+      </AppoProvider>
+    ),
+  },
   { path: "/finance", element: <FinancePage /> },
   { path: "/statistics", element: <StatisticsPage /> },
 ];
