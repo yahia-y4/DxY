@@ -9,11 +9,10 @@ export default function AppointmentAdd() {
       <Select w={"92%"} label={"المريض"} />
       <Input w={"90%"} label={"سبب الموعد"} />
       <Input w={"90%"} type="date" label={"تاريخ الحضور"} />
-      <Select w={"92%"} label={"اليوم"} />
       <Input w={"90%"} label={"الساعة"} />
       <div className="appointmentAdd-buts">
-        <Button lable={"اضافة"}/>
-        <Button lable={"الغاء"}/>
+        <Button lable={"اضافة"} />
+        <Button lable={"محو"} />
       </div>
     </div>
   );

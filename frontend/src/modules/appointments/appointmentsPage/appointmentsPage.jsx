@@ -1,15 +1,15 @@
-import AppointmentAdd from "../sections/appointmentAdd/appointmentAdd"
-import AppointmentInfo from "../sections/appointmentInfo/appointmentInfo"
-import AppointmentsTable from "../sections/appointmentsTable/appointmentsTable"
-import "./appointmentsPage.css"
-
+import AppointmentAdd from "../sections/appointmentAdd/appointmentAdd";
+import AppointmentInfo from "../sections/appointmentInfo/appointmentInfo";
+import AppointmentsTable from "../sections/appointmentsTable/appointmentsTable";
+import "./appointmentsPage.css";
+import { useAppo } from "../context/useAppo";
 export default function AppointmentsPage() {
-    return(
-        <div className="appointmentsPage">
-             {/* <AppointmentAdd/> */}
-             <AppointmentInfo/>
-            <AppointmentsTable/>
-           
-        </div>
-    )
+  const { appoSection } = useAppo();
+  return (
+    <div className="appointmentsPage">
+      {appoSection == "appoAdd" && <AppointmentAdd />}
+      {appoSection == "appoInfo" && <AppointmentInfo />}
+      <AppointmentsTable />
+    </div>
+  );
 }
