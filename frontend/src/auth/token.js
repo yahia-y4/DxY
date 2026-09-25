@@ -1,7 +1,7 @@
 const TOKEN_KEY = "auth_token";
 
 export const getToken = () => {
-  return "2|WNJ44BEFBjFLBjVi7JXiDcER5sMQkRh0XygLLI0ebf42df57";
+  return "1|Qm5lkbeNiyvYwVaRTt6vYhMo5JDAer8Sx7ro6lgR3f517b30";
   // return localStorage.getItem(TOKEN_KEY);
 };
 
