@@ -6,6 +6,8 @@ import Button from "../../../../components/button/button";
 import { useState } from "react";
 import { useTreatmentPlan } from "../../context/useTreatmentPlan";
 import { handleInputs } from "../../../../helperFunctions/handleInputs";
+import { useEditTreatmentPlan } from "../../queries/useEditTreatmentPlan";
+import { handleStatus } from "../../../../helperFunctions/handleStatus";
 export default function TreatmentPlanEdit() {
   const {
     setSelectedTreatmentPlan,
@@ -13,21 +15,33 @@ export default function TreatmentPlanEdit() {
     setCurrentTreatmentPlan,
   } = useTreatmentPlan();
 
+  const editTreatmentPlan = useEditTreatmentPlan();
+
   const [formData, setFormData] = useState({
+    id: selectedTreatmentPlan.id,
     name: selectedTreatmentPlan.name,
     description: selectedTreatmentPlan.description,
     status: selectedTreatmentPlan.status,
   });
 
   //functions
-  function handleStatus(setFun, stateData, status) {
-    setFun({ ...stateData, status: status });
+
+  function handleEditTreatmentPlan(){
+    editTreatmentPlan.mutate(formData,{
+      onSuccess:(treatmentPlan)=>{
+        setSelectedTreatmentPlan(treatmentPlan);
+        back()
+        
+      }
+    })
   }
+
   function back() {
     setCurrentTreatmentPlan("treatmentPlanInfo");
   }
   function emptyFormData() {
     setFormData({
+      id: selectedTreatmentPlan.id,
       name: "",
       description: "",
       status: "processing",
@@ -68,7 +82,7 @@ export default function TreatmentPlanEdit() {
           h={"100%"}
         />
         <div className="edit-buts">
-          <Button lable={"تعديل"} />
+          <Button onClick={handleEditTreatmentPlan} lable={"تعديل"} />
           <Button onClick={emptyFormData} lable={"محو"} />
           <Button onClick={back} lable={"الغاء"} />
         </div>

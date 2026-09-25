@@ -9,15 +9,26 @@ import { formatDate } from "../../../../helperFunctions/formatDate";
 
 export default function TreatmentPlanInfo() {
   const { setCurrentTreatmentPlan, selectedTreatmentPlan } = useTreatmentPlan();
-
+console.log(selectedTreatmentPlan)
   // functions
-
   function back() {
     setCurrentTreatmentPlan("treatmentPlanAdd");
   }
-  function edit(){
-    setCurrentTreatmentPlan("treatmentPlanEdit")
+  function edit() {
+    setCurrentTreatmentPlan("treatmentPlanEdit");
   }
+function status() {
+  switch (selectedTreatmentPlan.status) {
+    case "cancelled":
+      return "ملغية";
+
+    case "finished":
+      return "تمت المعالجة";
+
+    default:
+      return "قيد المعالجة";
+  }
+}
   //-------
 
   return (
@@ -42,10 +53,18 @@ export default function TreatmentPlanInfo() {
             data={`${selectedTreatmentPlan.patient.name} ${selectedTreatmentPlan.patient.father_name} ${selectedTreatmentPlan.patient.nick_name}`}
             w={"200px"}
           />
-          <InfoWin data={"قيد التنفيذ"} w={"100px"} />
-          <InfoWin title={"تاريخ البدء"} data={formatDate(selectedTreatmentPlan.created_at)} w={"80px"} />
+          <InfoWin data={status()} w={"100px"} />
+          <InfoWin
+            title={"تاريخ البدء"}
+            data={formatDate(selectedTreatmentPlan.created_at)}
+            w={"80px"}
+          />
         </div>
-        <InfoWin data={selectedTreatmentPlan.description} h={"55%"} w={"100%"} />
+        <InfoWin
+          data={selectedTreatmentPlan.description}
+          h={"55%"}
+          w={"100%"}
+        />
       </section>
       {/* <section className="section-2">
         <h3>{"جلسات هذه الخطة : "}</h3>
