@@ -2,17 +2,79 @@ import Button from "../../../../components/button/button";
 import Input from "../../../../components/input/input";
 import Select from "../../../../components/select/select";
 import "./appointmentAdd.css";
-
+import { useAddAppo } from "../../queries/useAddAppo";
+import { usePatients } from "../../../patients/queries/usePatients";
+import { useQueryUI } from "../../../../hooks/useQueryUI";
+import { useState } from "react";
+import { handleInputs } from "../../../../helperFunctions/handleInputs";
 export default function AppointmentAdd() {
+  const [formData, setFromData] = useState({
+    patient_id: "",
+    appointment_date: "",
+    hour: "",
+    vist_reason: "",
+    status: "pending",
+    note: "",
+  });
+  const patients = usePatients();
+  const addAppo = useAddAppo();
+  useQueryUI(addAppo);
+
+  //functions
+  function handleAddAppo() {
+    addAppo.mutate(formData, {
+      onSuccess: () => {
+        emptyData()
+      },
+    });
+  }
+
+  function emptyData() {
+    setFromData({
+      patient_id: "",
+      appointment_date: "",
+      hour: "",
+      vist_reason: "",
+      status: "pending",
+      note: "",
+    });
+  }
+  //
   return (
     <div className="appointmentAdd">
-      <Select w={"92%"} label={"المريض"} />
-      <Input w={"90%"} label={"سبب الموعد"} />
-      <Input w={"90%"} type="date" label={"تاريخ الحضور"} />
-      <Input w={"90%"} label={"الساعة"} />
+      <Select
+        onChange={(e) => handleInputs(setFromData, e)}
+        name={"patient_id"}
+        value={formData.patient_id}
+        patients={patients.data}
+        w={"92%"}
+        label={"المريض"}
+      />
+      <Input
+        onChange={(e) => handleInputs(setFromData, e)}
+        name={"vist_reason"}
+        value={formData.vist_reason}
+        w={"90%"}
+        label={"سبب الموعد"}
+      />
+      <Input
+        onChange={(e) => handleInputs(setFromData, e)}
+        name={"appointment_date"}
+        value={formData.appointment_date}
+        w={"90%"}
+        type="date"
+        label={"تاريخ الحضور"}
+      />
+      <Input
+        onChange={(e) => handleInputs(setFromData, e)}
+        name={"hour"}
+        value={formData.hour}
+        w={"90%"}
+        label={"الساعة"}
+      />
       <div className="appointmentAdd-buts">
-        <Button lable={"اضافة"} />
-        <Button lable={"محو"} />
+        <Button onClick={handleAddAppo} lable={"اضافة"} />
+        <Button onClick={emptyData} lable={"محو"} />
       </div>
     </div>
   );
