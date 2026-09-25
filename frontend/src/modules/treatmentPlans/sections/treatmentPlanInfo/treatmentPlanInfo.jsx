@@ -15,6 +15,9 @@ export default function TreatmentPlanInfo() {
   function back() {
     setCurrentTreatmentPlan("treatmentPlanAdd");
   }
+  function edit(){
+    setCurrentTreatmentPlan("treatmentPlanEdit")
+  }
   //-------
 
   return (
@@ -23,6 +26,7 @@ export default function TreatmentPlanInfo() {
         <div className="control-buts">
           <IconButton
             icon={<AppRegistrationOutlinedIcon style={{ fontSize: "27" }} />}
+            onClick={edit}
           />
           <IconButton
             icon={<DeleteOutlineOutlinedIcon style={{ fontSize: "27" }} />}

@@ -6,13 +6,15 @@ import TreatmentPlanInfo from "../sections/treatmentPlanInfo/treatmentPlanInfo";
 
 import "./treatmentPlansPage.css";
 import { useTreatmentPlan } from "../context/useTreatmentPlan";
+import TreatmentPlanEdit from "../sections/treatmentPlanEdit/treatmentPlanEdit";
 export default function TreatmentPlansPage() {
   const{currentTreatmentPlan}=useTreatmentPlan()
   return (
     <div className="treatmentPlans-Page">
-      {currentTreatmentPlan == "treatmentPlanAdd" && <TreatmentPlanAdd/>}
-     {currentTreatmentPlan == "treatmentPlanInfo" && <TreatmentPlanInfo />}
+      {currentTreatmentPlan == "treatmentPlanAdd"  && <TreatmentPlanAdd/>}
+      {(currentTreatmentPlan == "treatmentPlanInfo" || currentTreatmentPlan == "treatmentPlanEdit") && <TreatmentPlanInfo />}
       <TreatmentPlansTable />
+      {currentTreatmentPlan == "treatmentPlanEdit" && <TreatmentPlanEdit/>}
 
 
       {/* ---------بعدين ------------*/}
