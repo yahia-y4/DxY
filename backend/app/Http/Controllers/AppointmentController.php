@@ -22,6 +22,7 @@ public function store(Request $request){
     $appointment->hour = $request->hour;
     $appointment->vist_reason = $request->vist_reason;
     $appointment->note = $request->note;
+    $appointment->status = $request->status;
     $appointment->save();
     $appointment->load("patient");
 
@@ -38,6 +39,7 @@ public function edit(Request $request, $id){
     $appointment->hour = $request->hour;
     $appointment->vist_reason = $request->vist_reason;
     $appointment->note = $request->note;
+    $appointment->status = $request->status;
     $appointment->save();
     $appointment->load("patient");
 
