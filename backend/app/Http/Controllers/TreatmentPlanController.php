@@ -22,6 +22,7 @@ class TreatmentPlanController extends Controller
         $treatmentPlan->patient_id = $request->patient_id;
         $treatmentPlan->name = $request->name;
         $treatmentPlan->description = $request->description;
+        $treatmentPlan->status = $request->status;
         $treatmentPlan->save();
         $treatmentPlan->load("patient");
         return response()->json(['message' => 'Treatment plan created successfully', 'treatment_plan' => $treatmentPlan], 201);
@@ -36,6 +37,7 @@ class TreatmentPlanController extends Controller
         }
         $treatmentPlan->name = $request->name;
         $treatmentPlan->description = $request->description;
+        $treatmentPlan->status = $request->status;
         $treatmentPlan->save();
         $treatmentPlan->load("patient");
         return response()->json(['message' => 'Treatment plan updated successfully', 'treatment_plan' => $treatmentPlan], 200);
