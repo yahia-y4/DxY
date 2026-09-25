@@ -6,10 +6,12 @@ import InfoWin from "../../../../components/infoWin/infoWin";
 import { useTreatmentPlan } from "../../context/useTreatmentPlan";
 import IconButton from "../../../../components/iconButton/iconButton";
 import { formatDate } from "../../../../helperFunctions/formatDate";
-
+import {useWarning} from "../../../../context/warningContext/useWarning"
+import { useDeleteTreatmentPlan } from "../../queries/useDeleteTreatmentPlan";
 export default function TreatmentPlanInfo() {
   const { setCurrentTreatmentPlan, selectedTreatmentPlan } = useTreatmentPlan();
-console.log(selectedTreatmentPlan)
+  const deleteTreatmentPlan = useDeleteTreatmentPlan()
+  const {showWarning} = useWarning();
   // functions
   function back() {
     setCurrentTreatmentPlan("treatmentPlanAdd");
@@ -17,6 +19,17 @@ console.log(selectedTreatmentPlan)
   function edit() {
     setCurrentTreatmentPlan("treatmentPlanEdit");
   }
+  function handleDelete(){
+deleteTreatmentPlan.mutate(selectedTreatmentPlan.id,{
+  onSuccess:()=>{
+    back()
+  }
+})
+  }
+function handleDeleteClick(){
+  const deleteText = "هل تريد حذف هذه الخطة ؟؟";
+  showWarning(deleteText,handleDelete)
+}
 function status() {
   switch (selectedTreatmentPlan.status) {
     case "cancelled":
@@ -41,6 +54,7 @@ function status() {
           />
           <IconButton
             icon={<DeleteOutlineOutlinedIcon style={{ fontSize: "27" }} />}
+            onClick={handleDeleteClick}
           />
           <IconButton
             onClick={back}
