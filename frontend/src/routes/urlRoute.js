@@ -3,4 +3,6 @@ export const urlRoute = {
   sessions: "/sessions",
   treatmentPlans: "/treatmentPlans",
   appointments: "/appointments",
+  charges: "/charges",
+  payment:"/payment"
 };
