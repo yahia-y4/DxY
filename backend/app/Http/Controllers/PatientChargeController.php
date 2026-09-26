@@ -8,6 +8,13 @@ use App\Models\Patient;
 
 class PatientChargeController extends Controller
 {
+
+    public function index(Request $request){
+        $doctorId = $request->user()->id;
+        $charges = PatientCharge::where("doctor_id",$doctorId)->with("patient")->get();
+       return response()->json(['charges' => $charges], 200);
+    }
+    
     public function addPatientCharge(Request $request, $id)
     {
         $request->validate([

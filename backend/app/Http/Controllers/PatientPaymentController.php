@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class PatientPaymentController extends Controller
 {
+       public function index(Request $request){
+        $doctorId = $request->user()->id;
+        $payment = PatientPayment::where("doctor_id",$doctorId)->with("patient")->get();
+       return response()->json(['payment' => $payment], 200);
+    }
+    
     public function addPatientPayment(Request $request, $id)
     {
         $request->validate([
