@@ -6,9 +6,12 @@ import Button from "../../../../components/button/button";
 import { handleInputs } from "../../../../helperFunctions/handleInputs";
 import { useState } from "react";
 import { useAppo } from "../../context/useAppo";
+import { useEditAppo } from "../../queries/useEditAppo";
+import { useError } from "../../../../context/errorContext/useError";
 export default function AppointmentEdit() {
   const { selectedAppo, setSelectedAppo, setAppoSection } = useAppo();
-
+  const editAppo = useEditAppo();
+  const {showError} = useError()
   const [formData, setFormData] = useState({
     id: selectedAppo.id,
     appointment_date: selectedAppo.appointment_date,
@@ -19,6 +22,19 @@ export default function AppointmentEdit() {
   });
 
   // functions
+  function handleEditAppo() {
+    editAppo.mutate(formData, {
+      
+      onSuccess: (appo) => {
+        setSelectedAppo(appo);
+        back();
+      },
+      onError: () => {
+        showError("خطا في تعديل الموعد")
+      },
+      
+    });
+  }
   function emptyFormData() {
     setFormData({
       id: selectedAppo.id,
@@ -77,7 +93,7 @@ export default function AppointmentEdit() {
         </div>
 
         <div className="edit-buts">
-          <Button onClick={""} lable={"تعديل"} />
+          <Button onClick={handleEditAppo} lable={"تعديل"} />
           <Button onClick={emptyFormData} lable={"محو"} />
           <Button onClick={back} lable={"الغاء"} />
         </div>
