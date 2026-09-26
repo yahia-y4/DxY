@@ -7,7 +7,7 @@ export default function Loading() {
   if(!loading) return null
   return (
     <div className="loading-div">
-      <div className="loading">loading </div>
+      <div className="loader"></div>
     </div>
   );
 }
