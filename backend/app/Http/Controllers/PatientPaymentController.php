@@ -34,8 +34,9 @@ class PatientPaymentController extends Controller
         $payment->note = $request->note;
         $payment->save();
         $patient->save();
+        $payment->load("patient");
 
-        return response()->json(['message' => 'Patient payment added successfully', 'payment' => $payment,'patient'=>$patient], 201);
+        return response()->json(['message' => 'Patient payment added successfully', 'payment' => $payment], 201);
 
     }
 
