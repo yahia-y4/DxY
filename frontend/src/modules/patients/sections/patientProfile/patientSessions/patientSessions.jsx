@@ -3,50 +3,74 @@ import Search from "../../../../../components/search/search";
 import Table from "../../../../../components/table/table";
 import "./patientSessions.css";
 import PatientSessionsAdd from "./patientSessionsAdd/patientSessionsAdd";
-import ForwardIcon from '@mui/icons-material/Forward';
+import ForwardIcon from "@mui/icons-material/Forward";
 import PatientSessionsInfo from "./patientSessionsInfo/patientSessionsInfo";
 import { handleArrayState } from "../../../../../helperFunctions/handleArrayState";
 import { useContext } from "react";
 import { PatientsContext } from "../../../context/patientsContext";
+import { useGetSessions } from "../../../../sessions/queries/useGetSessions";
+import { formatDate } from "../../../../../helperFunctions/formatDate";
 export default function PatientSessions() {
-  const {selectedPatientSection, setSelectedPatientSection} = useContext(PatientsContext)
+  const {
+    selectedPatientSection,
+    setSelectedPatientSection,
+    selectedPatient,
+    setSelectedSession,
+  } = useContext(PatientsContext);
+
+  const { data: sessions = [] } = useGetSessions();
+
+  const patientSessions = sessions.filter(
+    (session) => session.patient?.id === selectedPatient?.id
+  );
+
   const columns = [
     { name: "id", label: "ID" },
-    { name: "sections_name", label: "الجلسة" },
-    { name: "date", label: "تاريخ الجلسة" },
-  ];
-  const data = [
-    { id: 1, sections_name: "جلسة علاج طبيعي", date: "2023-01-01" },
-    { id: 2, sections_name: "جلسة علاج طبيعي", date: "2023-01-02" },
-    { id: 3, sections_name: "جلسة علاج طبيعي", date: "2023-01-03" },
-    { id: 4, sections_name: "جلسة علاج طبيعي", date: "2023-01-04" },
-    { id: 5, sections_name: "جلسة علاج طبيعي", date: "2023-01-05" },
+    { name: "name", label: "الجلسة" },
+    { name: (s)=> formatDate(s.created_at), label: "تاريخ الجلسة" },
   ];
 
-  // functions
-  function back(){
-    handleArrayState(setSelectedPatientSection,1,null)
-    handleArrayState(setSelectedPatientSection,2,null)
+  function back() {
+    handleArrayState(setSelectedPatientSection, 1, null);
+    handleArrayState(setSelectedPatientSection, 2, null);
   }
-  function onRowClick(){
-  handleArrayState(setSelectedPatientSection,2,"PatientSessionsInfo")
+
+  function onRowClick(session) {
+    handleArrayState(
+      setSelectedPatientSection,
+      2,
+      "PatientSessionsInfo"
+    );
+    setSelectedSession(session);
   }
-  console.log()
-  //
+
   return (
     <div className="patient-sessions">
-      {/* <h3 className="patient-sessions-title"> جلسات المريض الفلاني </h3> */}
       <div className="patient-sessions-content">
         <div className="patient-sessions-table">
           <div className="patient-sessions-table-header">
-            <IconButton onClick={back} icon={<ForwardIcon style={{fontSize:"35px"}} />} />
+            <IconButton
+              onClick={back}
+              icon={<ForwardIcon style={{ fontSize: "35px" }} />}
+            />
+
             <Search w={"95%"} />
           </div>
 
-          <Table onRowClick={onRowClick} data={data} columns={columns} w={"95%"} />
+          <Table
+            onRowClick={onRowClick}
+            data={patientSessions}
+            columns={columns}
+            w={"95%"}
+          />
         </div>
+
         <div className="patient-sessions-add-info-div">
-          {selectedPatientSection[2] == "PatientSessionsInfo" ? <PatientSessionsInfo/> : <PatientSessionsAdd /> }
+          {selectedPatientSection[2] === "PatientSessionsInfo" ? (
+            <PatientSessionsInfo />
+          ) : (
+            <PatientSessionsAdd />
+          )}
         </div>
       </div>
     </div>

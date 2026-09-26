@@ -9,8 +9,10 @@ import ShowToothWin from "../../../../../../components/showToothWin/showToothWin
 import { useContext } from "react";
 import { PatientsContext } from "../../../../context/patientsContext";
 import { handleArrayState } from "../../../../../../helperFunctions/handleArrayState";
+import { formatDate } from "../../../../../../helperFunctions/formatDate";
 export default function PatientSessionsInfo() {
-     const { setSelectedPatientSection} = useContext(PatientsContext)
+     const { setSelectedPatientSection,selectedSession} = useContext(PatientsContext)
+     console.log(selectedSession)
 
      // function 
      function back(){
@@ -28,17 +30,17 @@ export default function PatientSessionsInfo() {
    
         </div>
         <div className="content">
-            <InfoWin  data={"جلسة علاج طبيعي في السن الخلفي "}/>
+            <InfoWin  data={selectedSession.name}/>
            
-            <InfoWin  data={"2026/9/15"}/>
-            <ShowToothWin number={"7"} horizontal={"left"} vertical={"bottom"}/>
+            <InfoWin  data={formatDate(selectedSession.created_at)}/>
+            <ShowToothWin number={selectedSession.teeth_number} horizontal={selectedSession.teeth_horizontal} vertical={selectedSession.teeth_vertical}/>
         </div>
       </section>
       <section className="section-2">
-        <InfoWin lable={"التشخيص : "} h={"120px"} w={"70%"}/>
-        <InfoWin lable={"المعالجة : "} h={"120px"} w={"70%"}/>
-        <InfoWin lable={"الادوية الموصوفة : "} h={"120px"} w={"70%"}/>
-        <InfoWin lable={"ملاحظة : "} h={"120px"} w={"70%"}/>
+        <InfoWin data={selectedSession.diagnosis} lable={"التشخيص : "} h={"120px"} w={"70%"}/>
+        <InfoWin data={selectedSession.treatment} lable={"المعالجة : "} h={"120px"} w={"70%"}/>
+        <InfoWin data={selectedSession.prescribed_medication} lable={"الادوية الموصوفة : "} h={"120px"} w={"70%"}/>
+        <InfoWin data={selectedSession.description} lable={"الوصف  : "} h={"120px"} w={"70%"}/>
       </section>
         </div>
     );
