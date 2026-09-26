@@ -11,6 +11,7 @@ import { PatientsProvider } from "../modules/patients/context/patientsProvider";
 import { SessionsProvider } from "../modules/sessions/context/sessionsProvider";
 import { TreatmentPlansProvider } from "../modules/treatmentPlans/context/treatmentPlansProvider";
 import { AppoProvider } from "../modules/appointments/context/appoProvider";
+import { FinanceProvider } from "../modules/finance/context/financeProvider";
 //-------
 
 export const RouteDefine = [
@@ -47,6 +48,13 @@ export const RouteDefine = [
       </AppoProvider>
     ),
   },
-  { path: "/finance", element: <FinancePage /> },
+  {
+    path: "/finance",
+    element: (
+      <FinanceProvider>
+        <FinancePage />
+      </FinanceProvider>
+    ),
+  },
   { path: "/statistics", element: <StatisticsPage /> },
 ];
