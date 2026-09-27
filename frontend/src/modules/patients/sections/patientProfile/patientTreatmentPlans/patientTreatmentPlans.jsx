@@ -8,27 +8,19 @@ import PatientTreatmentPlansInfo from "./patientTreatmentPlansInfo/patientTreatm
 import { useContext } from "react";
 import { PatientsContext } from "../../../context/patientsContext";
 import { handleArrayState } from "../../../../../helperFunctions/handleArrayState";
+import {useGetTreatmentPlans} from "../../../../treatmentPlans/queries/useGetTreatmentPlans";
+import { formatDate } from "../../../../../helperFunctions/formatDate";
 export default function PatientTreatmentPlans() {
 
-const {selectedPatientSection, setSelectedPatientSection} = useContext(PatientsContext)
-
-
+const {selectedPatientSection, setSelectedPatientSection,selectedPatient,setSelectedTreatmentPlan} = useContext(PatientsContext)
+const {data:treatmentPlans = [] } = useGetTreatmentPlans()
+const patientTreatmentPlans = treatmentPlans.filter((treatmentPlan)=>treatmentPlan?.patient_id == selectedPatient.id)
     const columns = [
     { name: "id", label: "ID" },
-    { name: "treatment_plans_name", label: "الخطة" },
-    { name: "date", label: "تاريخ بدء الخطة" },
+    { name: "name", label: "الخطة" },
+    { name: (treatmentPlan)=> formatDate(treatmentPlan.created_at), label: "تاريخ بدء الخطة" },
   ];
-  const data = [
-    { id: 1, treatment_plans_name: "جلسة علاج طبيعي", date: "2023-01-01" },
-    { id: 1, treatment_plans_name: "جلسة علاج طبيعي", date: "2023-01-01" },
-    { id: 1, treatment_plans_name: "جلسة علاج طبيعي", date: "2023-01-01" },
-    { id: 1, treatment_plans_name: "جلسة علاج طبيعي", date: "2023-01-01" },
-    { id: 1, treatment_plans_name: "جلسة علاج طبيعي", date: "2023-01-01" },
-    { id: 1, treatment_plans_name: "جلسة علاج طبيعي", date: "2023-01-01" },
-    { id: 1, treatment_plans_name: "جلسة علاج طبيعي", date: "2023-01-01" },
-    { id: 1, treatment_plans_name: "جلسة علاج طبيعي", date: "2023-01-01" },
-  
-  ];
+
 
 
   // functions 
@@ -37,8 +29,10 @@ const {selectedPatientSection, setSelectedPatientSection} = useContext(PatientsC
     handleArrayState(setSelectedPatientSection,2,null)
   }
 
-  function onRowClick(){
+  function onRowClick(treatmentPlan){
      handleArrayState(setSelectedPatientSection,2,"PatientTreatmentPlansInfo")
+     setSelectedTreatmentPlan(treatmentPlan);
+     
   }
   //
   return (
@@ -50,7 +44,7 @@ const {selectedPatientSection, setSelectedPatientSection} = useContext(PatientsC
            <IconButton onClick={back} icon={<ForwardIcon style={{fontSize:"35px"}} />} />
             <Search w={"95%"} />
         </div>
-        <Table onRowClick={onRowClick} w={"95%"} columns={columns} data={data}/>
+        <Table onRowClick={onRowClick} w={"95%"} columns={columns} data={patientTreatmentPlans}/>
       </div>
       <div className="patient-treatment-plans-add-info-div">
         { selectedPatientSection[2] == "PatientTreatmentPlansInfo" ?  <PatientTreatmentPlansInfo/>:<PatientTreatmentPlansAdd/>}

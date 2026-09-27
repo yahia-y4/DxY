@@ -8,7 +8,8 @@ export const PatientsProvider = ({ children }) => {
     null,
   ]);
   // [patientsTable || patientProfile  || patientAdd || patientProfile , ... ] index (0) = main section, index (1) = sub section
-const [selectedSession,setSelectedSession] = useState({});
+  const [selectedSession, setSelectedSession] = useState({});
+  const [selectedTreatmentPlan, setSelectedTreatmentPlan] = useState({});
   return (
     <PatientsContext.Provider
       value={{
@@ -18,7 +19,8 @@ const [selectedSession,setSelectedSession] = useState({});
         setSelectedPatientSection,
         selectedSession,
         setSelectedSession,
-
+        selectedTreatmentPlan,
+        setSelectedTreatmentPlan,
       }}
     >
       {children}

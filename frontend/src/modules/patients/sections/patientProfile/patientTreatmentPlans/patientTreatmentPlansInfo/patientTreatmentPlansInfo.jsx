@@ -7,28 +7,41 @@ import IconButton from "../../../../../../components/iconButton/iconButton";
 import { useContext } from "react";
 import { PatientsContext } from "../../../../context/patientsContext";
 import { handleArrayState } from "../../../../../../helperFunctions/handleArrayState";
+import { formatDate } from "../../../../../../helperFunctions/formatDate";
 export default function PatientTreatmentPlansInfo() {
-    const {setSelectedPatientSection} = useContext(PatientsContext)
+  const { setSelectedPatientSection, selectedTreatmentPlan } =
+    useContext(PatientsContext);
+  //functions
+  function back() {
+    handleArrayState(setSelectedPatientSection, 2, null);
+  }
+  function status() {
+  switch (selectedTreatmentPlan.status) {
+    case "cancelled":
+      return "ملغية";
 
-    //functions
-    function back(){
-        handleArrayState(setSelectedPatientSection,2,null)
-    }
-    //
+    case "finished":
+      return "تمت المعالجة";
+
+    default:
+      return "قيد المعالجة";
+  }
+}
+  //
   return (
     <div className="patientTreatmentPlans-Info">
       <section className="section-1">
         <div className="control-buts">
-     
-          <IconButton icon={<AppRegistrationOutlinedIcon />}/>
-          <IconButton icon={ <DeleteOutlineOutlinedIcon />}/>
-          <IconButton onClick={back} icon={<ArrowBackIcon />}/>
+          <IconButton icon={<AppRegistrationOutlinedIcon />} />
+          <IconButton icon={<DeleteOutlineOutlinedIcon />} />
+          <IconButton onClick={back} icon={<ArrowBackIcon />} />
         </div>
         <div className="content-1">
-          <InfoWin data={"زراعة 3 زرعات في الفك السفلي"} w={"300px"} />
-          <InfoWin data={"يحيى محمد الحمود"} w={"200px"} />
-          <InfoWin data={"قيد التنفيذ"} w={"100px"} />
-          <InfoWin data={"2026/9/16 "} w={"80px"} />
+          <InfoWin data={selectedTreatmentPlan.name} w={"300px"} />
+          <InfoWin data={`${selectedTreatmentPlan.patient.name} ${selectedTreatmentPlan.patient.father_name} ${selectedTreatmentPlan.patient.nick_name} `} w={"200px"} />
+          <InfoWin data={status()} w={"100px"} />
+          <InfoWin data={formatDate(selectedTreatmentPlan.created_at)} w={"80px"} />
+          <InfoWin title={"ID"} data={selectedTreatmentPlan.id} w={"50px"} />
         </div>
         <InfoWin h={"55%"} w={"100%"} />
       </section>
