@@ -8,10 +8,32 @@ import { useContext } from "react";
 import { PatientsContext } from "../../../../context/patientsContext";
 import { handleArrayState } from "../../../../../../helperFunctions/handleArrayState";
 import { formatDate } from "../../../../../../helperFunctions/formatDate";
+import { useWarning } from "../../../../../../context/warningContext/useWarning";
+import { useError } from "../../../../../../context/errorContext/useError";
+import { useDeleteTreatmentPlan } from "../../../../../treatmentPlans/queries/useDeleteTreatmentPlan";
 export default function PatientTreatmentPlansInfo() {
   const { setSelectedPatientSection, selectedTreatmentPlan } =
     useContext(PatientsContext);
+    const deleteTreatmentPlan = useDeleteTreatmentPlan();
+    const {showError} = useError();
+    const {showWarning} = useWarning();
   //functions
+  function handleDelete(){
+    deleteTreatmentPlan.mutate(selectedTreatmentPlan.id,{
+      onSuccess:()=>{
+        back();
+      },
+      onError:()=>{
+        const text="خطأ في حذف هذه الخطة"
+        showError(text);
+      }
+    })
+  }
+  function handleDeleteClick(){
+    const text = "هل تريد حذف هذه الخطة؟؟"
+    showWarning(text,handleDelete)
+
+  }
   function back() {
     handleArrayState(setSelectedPatientSection, 2, null);
   }
@@ -37,7 +59,7 @@ export default function PatientTreatmentPlansInfo() {
       <section className="section-1">
         <div className="control-buts">
           <IconButton onClick={edit} icon={<AppRegistrationOutlinedIcon />} />
-          <IconButton icon={<DeleteOutlineOutlinedIcon />} />
+          <IconButton onClick={handleDeleteClick} icon={<DeleteOutlineOutlinedIcon />} />
           <IconButton onClick={back} icon={<ArrowBackIcon />} />
         </div>
         <div className="content-1">
@@ -47,7 +69,7 @@ export default function PatientTreatmentPlansInfo() {
           <InfoWin data={formatDate(selectedTreatmentPlan.created_at)} w={"80px"} />
           <InfoWin title={"ID"} data={selectedTreatmentPlan.id} w={"50px"} />
         </div>
-        <InfoWin h={"55%"} w={"100%"} />
+        <InfoWin notCenter={true} data={selectedTreatmentPlan.description} h={"55%"} w={"100%"} />
       </section>
       {/* <section className="section-2">
         <h3>{"جلسات هذه الخطة : "}</h3>

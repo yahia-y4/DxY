@@ -1,22 +1,27 @@
-.infoWin-box{
+.infoWin-box {
   color: var(--text2);
   height: 70px;
   min-width: 120px;
-
-
-    
 }
 
-.infoWin-div{
-    width: 100%;
-    height: 100%;
-    background-color: var(--win);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    color: var(--text1);
-    border-radius: 10px;
-    padding: 5px;
-   
+.infoWin-div {
+  width: 100%;
+  height: 100%;
+  background-color: var(--win);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--text1);
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.infoWin-div-not-center {
+  width: 100%;
+  height: 100%;
+  background-color: var(--win);
+  color: var(--text1);
+  border-radius: 10px;
+  padding: 5px;
 }
