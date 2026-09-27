@@ -15,6 +15,10 @@ export default function PatientTreatmentPlansInfo() {
   function back() {
     handleArrayState(setSelectedPatientSection, 2, null);
   }
+  function edit(){
+        handleArrayState(setSelectedPatientSection, 3, "PatientTreatmentPlansEdit");
+
+  }
   function status() {
   switch (selectedTreatmentPlan.status) {
     case "cancelled":
@@ -32,7 +36,7 @@ export default function PatientTreatmentPlansInfo() {
     <div className="patientTreatmentPlans-Info">
       <section className="section-1">
         <div className="control-buts">
-          <IconButton icon={<AppRegistrationOutlinedIcon />} />
+          <IconButton onClick={edit} icon={<AppRegistrationOutlinedIcon />} />
           <IconButton icon={<DeleteOutlineOutlinedIcon />} />
           <IconButton onClick={back} icon={<ArrowBackIcon />} />
         </div>

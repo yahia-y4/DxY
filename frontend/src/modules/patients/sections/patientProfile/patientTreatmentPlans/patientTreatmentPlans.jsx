@@ -10,6 +10,7 @@ import { PatientsContext } from "../../../context/patientsContext";
 import { handleArrayState } from "../../../../../helperFunctions/handleArrayState";
 import {useGetTreatmentPlans} from "../../../../treatmentPlans/queries/useGetTreatmentPlans";
 import { formatDate } from "../../../../../helperFunctions/formatDate";
+import PatientTreatmentPlansEdit from "./patientTreatmentPlansEdit/patientTreatmentPlansEdit";
 export default function PatientTreatmentPlans() {
 
 const {selectedPatientSection, setSelectedPatientSection,selectedPatient,setSelectedTreatmentPlan} = useContext(PatientsContext)
@@ -48,6 +49,7 @@ const patientTreatmentPlans = treatmentPlans.filter((treatmentPlan)=>treatmentPl
       </div>
       <div className="patient-treatment-plans-add-info-div">
         { selectedPatientSection[2] == "PatientTreatmentPlansInfo" ?  <PatientTreatmentPlansInfo/>:<PatientTreatmentPlansAdd/>}
+        {selectedPatientSection[3] == "PatientTreatmentPlansEdit" && <PatientTreatmentPlansEdit/>}
        
       </div>
      </div>
