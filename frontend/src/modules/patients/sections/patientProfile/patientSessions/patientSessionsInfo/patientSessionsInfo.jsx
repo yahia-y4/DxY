@@ -18,13 +18,16 @@ export default function PatientSessionsInfo() {
      function back(){
         handleArrayState(setSelectedPatientSection,2,null)
      }
+       function edit(){
+    handleArrayState(setSelectedPatientSection,3,"PatientSessionsEdit")
+  }
      //
     return (
         <div className="patient-sessions-info">
         <section className="section-1">
         <div className="Control-buts">
     
-          <IconButton icon={<AppRegistrationOutlinedIcon style={{ fontSize: "27" }} />}/>
+          <IconButton onClick={edit} icon={<AppRegistrationOutlinedIcon style={{ fontSize: "27" }} />}/>
           <IconButton icon={<DeleteOutlineOutlinedIcon style={{ fontSize: "27" }} />}/>
           <IconButton onClick={back} icon={<ArrowBackIcon style={{ fontSize: "27" }}/>}/>
    

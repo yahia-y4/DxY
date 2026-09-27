@@ -10,6 +10,7 @@ import { useContext } from "react";
 import { PatientsContext } from "../../../context/patientsContext";
 import { useGetSessions } from "../../../../sessions/queries/useGetSessions";
 import { formatDate } from "../../../../../helperFunctions/formatDate";
+import PatientSessionsEdit from "./patientSessionsEdit/patientSessionsEdit";
 export default function PatientSessions() {
   const {
     selectedPatientSection,
@@ -34,6 +35,7 @@ export default function PatientSessions() {
     handleArrayState(setSelectedPatientSection, 1, null);
     handleArrayState(setSelectedPatientSection, 2, null);
   }
+
 
   function onRowClick(session) {
     handleArrayState(
@@ -71,6 +73,7 @@ export default function PatientSessions() {
           ) : (
             <PatientSessionsAdd />
           )}
+          {selectedPatientSection [3] == "PatientSessionsEdit" && <PatientSessionsEdit/>}
         </div>
       </div>
     </div>
