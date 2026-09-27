@@ -6,6 +6,8 @@ import { handleInputs } from "../../../../helperFunctions/handleInputs";
 import { setToken } from "../../../../auth/token";
 import { useLogin } from "../../queries/useLogin";
 import { useError } from "../../../../context/errorContext/useError";
+import { useAuth } from "../../../../context/authContext/useAuth";
+import { useLoading } from "../../../../context/loadingContext/useLoading";
 export default function LoginForm() {
   const [formData, setFormData] = useState({
     email: "",
@@ -13,16 +15,22 @@ export default function LoginForm() {
   });
   const login = useLogin();
   const { showError } = useError();
+  const {setIsAuth} = useAuth();
+  const {showLoading, hideLoading } = useLoading();
 
   // functions
   function handleLogin() {
+showLoading();
     login.mutate(formData, {
       onSuccess: (token) => {
+        setIsAuth(true)
         setToken(token);
         emptyData();
+        hideLoading()
       },
       onError: (e) => {
         showError(e.message);
+        hideLoading()
       },
     });
   }
