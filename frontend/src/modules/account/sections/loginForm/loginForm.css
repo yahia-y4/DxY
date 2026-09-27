@@ -1,0 +1,17 @@
+.LoginForm{
+    width: 40%;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid #00000094;
+    padding: 10px;
+    border-radius: 15px;
+}
+.LoginForm-buts{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
