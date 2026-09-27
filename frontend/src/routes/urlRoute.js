@@ -4,5 +4,6 @@ export const urlRoute = {
   treatmentPlans: "/treatmentPlans",
   appointments: "/appointments",
   charges: "/charges",
-  payment:"/payment"
+  payment:"/payment",
+  auth:"/auth"
 };
