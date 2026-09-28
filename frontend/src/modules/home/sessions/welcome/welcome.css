@@ -1,0 +1,14 @@
+.welcome-div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+.welcome-text{
+    font-size: 22px;
+    font-weight: 600;
+}
+.what-doing{
+      font-size: 18px;
+    font-weight: 500;
+}

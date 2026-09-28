@@ -1,0 +1,10 @@
+.toDayInfo-div {
+    width: 80%;
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+   
+
+}

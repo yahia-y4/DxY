@@ -1,0 +1,21 @@
+.time-div{
+
+    width: 60%;
+    height: fit-content;
+    min-width: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.time-div .hour{
+    font-size: 40px;
+    font-weight: 600;
+}
+.time-div .date{
+    font-size: 20px;
+      font-weight: 600;
+}
+.time-div .day{
+    font-size: 20px;
+}
