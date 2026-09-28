@@ -1,12 +1,15 @@
 import "./toDayInfo.css";
 import InfoWin from "../../../../components/infoWin/infoWin";
+import { useGetDayCount } from "../../queries/useGetDayCount";
 export default function ToDayInfo() {
+    const {data} = useGetDayCount()
+    console.log(data)
   return (
     <div className="toDayInfo-div">
-      <InfoWin data={"7"} title={"عدد جلسات اليوم"} />
-      <InfoWin data={"3"} title={"المرضى المضافين اليوم"} />
-      <InfoWin data={"10"} title={"مواعيد اليوم"} />
-      <InfoWin data={"6"} title={"المواعيد المنجزة اليوم"} />
+      <InfoWin data={data?.sessionsCount} title={"عدد جلسات اليوم"} />
+      <InfoWin data={data?.patientsCount} title={"المرضى المضافين اليوم"} />
+      <InfoWin data={data?.appointmentsCount} title={"مواعيد اليوم"} />
+      <InfoWin data={data?.appointmentsDoingCount} title={"المواعيد المنجزة اليوم"} />
     </div>
   );
 }
