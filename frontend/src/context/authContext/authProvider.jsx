@@ -1,14 +1,31 @@
 import { AuthContext } from "./authContext";
-import { useState } from "react";
+import { useAuthQuery } from "../../modules/account/queries/useAuthQuery";
 import { getToken } from "../../auth/token";
-export function AuthProvider({children}){
-const [isAuth, setIsAuth] = useState(!!getToken());
-    return(
-        <AuthContext.Provider value={{
-            isAuth,
-            setIsAuth
-        }}>
-            {children}
-        </AuthContext.Provider>
-    )
+import { useState } from "react";
+export function AuthProvider({ children }) {
+
+  const {
+    data: user,
+    isPending,
+    isError,
+  } = useAuthQuery();
+
+  const hasToken = !!getToken();
+
+  
+  const [isAuth , setIsAuth] = useState(hasToken || !!user)
+
+  return (
+    <AuthContext.Provider
+      value={{
+        user,
+        isAuth,
+        isLoading: hasToken && isPending,
+        isError,
+        setIsAuth
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 }

@@ -5,7 +5,6 @@ import TreatmentPlansPage from "../modules/treatmentPlans/treatmentPlansPage/tre
 import AppointmentsPage from "../modules/appointments/appointmentsPage/appointmentsPage";
 import FinancePage from "../modules/finance/financePage/financePage";
 import StatisticsPage from "../modules/statistics/statisticsPage/statisticsPage";
-import AccountPage from "../modules/account/accountPage/accountPage";
 
 //Providers
 import { PatientsProvider } from "../modules/patients/context/patientsProvider";
@@ -57,6 +56,6 @@ export const RouteDefine = [
       </FinanceProvider>
     ),
   },
-  { path: "/statistics", element: <StatisticsPage /> },
-  { path: "/account", element: <AccountPage /> },
+  { path: "/statistics", element: <StatisticsPage /> }
+ 
 ];

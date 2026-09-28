@@ -9,7 +9,8 @@ import ErrorWin from "./components/errorWin/errorWin";
 import Loading from "./components/loading/loading";
 import Warning from "./components/warning/warning";
 
-
+import ProtectedRoute from "./auth/protectedRoute";
+import AccountPage from "./modules/account/accountPage/accountPage";
 
 function App() {
   return (
@@ -19,8 +20,11 @@ function App() {
         <SideBar/>
         <Routes>
           {RouteDefine.map((route,index)=>(
-            <Route key={index} element={route.element} path={route.path}/>
+
+            <Route element={<ProtectedRoute/>}>{<Route key={index} element={route.element} path={route.path}/>}</Route>
+            
           ))}
+          <Route path="/account" element={<AccountPage/>}/>
         </Routes>
       </div>
 
