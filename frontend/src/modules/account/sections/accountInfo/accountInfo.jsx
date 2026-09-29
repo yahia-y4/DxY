@@ -5,9 +5,11 @@ import Button from "../../../../components/button/button";
 import {formatDate} from "../../../../helperFunctions/formatDate";
 import { removeToken } from "../../../../auth/token";
 import {useWarning} from "../../../../context/warningContext/useWarning"
+
 export default function AccountInfo(){
     const {user,setIsAuth} = useAuth();
     const {showWarning} = useWarning();
+
 
     //functions
     function logout(){

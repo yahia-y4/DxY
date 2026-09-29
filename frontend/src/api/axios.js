@@ -10,28 +10,25 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-    const token = getToken();
-    console.log(token)
+  const token = getToken();
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
 
-    if (token) {
-    
-        config.headers.Authorization = `Bearer ${token}`;
-    }
-
-    return config;
+  return config;
 });
 
 api.interceptors.response.use(
-    (response) => response,
+  (response) => response,
 
-    (error) => {
-        if (error.response?.status === 401) {
-            removeToken();
-            // logout
-        }
-
-        return Promise.reject(error);
+  (error) => {
+    if (error.response?.status === 401) {
+      removeToken();
+      // logout
     }
+
+    return Promise.reject(error);
+  },
 );
 
 export default api;

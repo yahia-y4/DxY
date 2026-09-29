@@ -22,11 +22,12 @@ export default function LoginForm() {
   function handleLogin() {
 showLoading();
     login.mutate(formData, {
-      onSuccess: (token) => {
+      onSuccess: (data) => {
         setIsAuth(true)
-        setToken(token);
+        setToken(data.token);
         emptyData();
         hideLoading()
+      
       },
       onError: (e) => {
         showError(e.message);
