@@ -1,8 +1,8 @@
 import "./homePage.css";
-import Time from "../sessions/time/time";
-import Welcome from "../sessions/welcome/welcome";
-import ToDayInfo from "../sessions/toDayInfo/toDayInfo";
-import Reminder from "../sessions/reminder/reminder";
+import Time from "../sections/time/time";
+import Welcome from "../sections/welcome/welcome";
+import ToDayInfo from "../sections/toDayInfo/toDayInfo";
+import Reminder from "../sections/reminder/reminder";
 export default function HomePage() {
   return (
     <div className="homePage">

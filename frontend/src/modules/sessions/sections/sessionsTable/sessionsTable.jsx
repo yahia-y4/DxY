@@ -6,6 +6,7 @@ import { useSession } from "../../context/useSession";
 import { useGetSessions } from "../../queries/useGetSessions";
 import { handleArrayState } from "../../../../helperFunctions/handleArrayState";
 import { useQueryUI } from "../../../../hooks/useQueryUI";
+import {formatDate} from "../../../../helperFunctions/formatDate"
 export default function SectionsTable() {
   const columns = [
     { name: "id", label: "ID" },
@@ -13,7 +14,7 @@ export default function SectionsTable() {
     { name: (session)=>session?.patient.father_name, label: "الاب" },
     { name: (session)=>session?.patient.nick_name, label: "الكنية" },
     { name: "name", label: "الجلسة" },
-    { name: "created_at", label: "تاريخ الجلسة" },
+    { name: (session)=>formatDate(session.created_at), label: "تاريخ الجلسة" },
  
   ];
 
