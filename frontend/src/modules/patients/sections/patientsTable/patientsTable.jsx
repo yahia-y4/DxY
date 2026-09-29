@@ -2,30 +2,37 @@ import AddButton from "../../../../components/addButton/addButton";
 import Search from "../../../../components/search/search";
 import Table from "../../../../components/table/table";
 import "./patientsTable.css";
-import {handleArrayState} from "../../../../helperFunctions/handleArrayState";
+import { handleArrayState } from "../../../../helperFunctions/handleArrayState";
 import { PatientsContext } from "../../context/patientsContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { usePatients } from "../../queries/usePatients";
 import { useQueryUI } from "../../../../hooks/useQueryUI";
+import { searchFun } from "../../../../helperFunctions/searchFun";
 export default function PatientsTable() {
-const {data ,isLoading,isError,error,hasToken} = usePatients()
-  useQueryUI({isLoading,isError,error,hasToken})
- //Context---
-  const {
-    setSelectedPatient,
-    setSelectedPatientSection,
-  } = useContext(PatientsContext);
-    //---------
+  const { data, isLoading, isError, error, hasToken } = usePatients();
+  useQueryUI({ isLoading, isError, error, hasToken });
+  const [searchValue, setSearchValue] = useState("");
 
+  //Context---
+  const { setSelectedPatient, setSelectedPatientSection } =
+    useContext(PatientsContext);
+  //---------
 
-// functions 
+  // functions
   function handleRowClick(patient) {
     setSelectedPatient(patient);
-    handleArrayState(setSelectedPatientSection,0,"patientProfile");
+    handleArrayState(setSelectedPatientSection, 0, "patientProfile");
   }
 
- 
+  function handleSearch(value) {
+    setSearchValue(value);
+  }
+  function handleCancel() {
+     setSearchValue("");
+  }
+
   //------
+
   const columns = [
     { name: "id", label: "ID" },
     { name: "name", label: "الاسم" },
@@ -34,16 +41,23 @@ const {data ,isLoading,isError,error,hasToken} = usePatients()
     { name: "dirth_date", label: "تاريخ الميلاد" },
     { name: "identity_card_number", label: "رقم الهوية" },
   ];
-
-
+  const tableData = searchFun(data ?? [],searchValue,["name","father_name","nick_name","identity_card_number"]);
   return (
     <div className="patientsTable">
-      <Search onSearch={""} w={"70%"} />
+      <Search onCancel={handleCancel} onSearch={handleSearch} w={"70%"} />
 
-      <Table onRowClick={handleRowClick} data={data} columns={columns} w={"70%"} h={"70%"}></Table>
-      <AddButton onClick={()=>{handleArrayState(setSelectedPatientSection,0,"patientAdd")}} />
+      <Table
+        onRowClick={handleRowClick}
+        data={tableData}
+        columns={columns}
+        w={"70%"}
+        h={"70%"}
+      ></Table>
+      <AddButton
+        onClick={() => {
+          handleArrayState(setSelectedPatientSection, 0, "patientAdd");
+        }}
+      />
     </div>
   );
-
-  
 }

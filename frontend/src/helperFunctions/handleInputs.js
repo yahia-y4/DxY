@@ -3,6 +3,6 @@ export function handleInputs(setFun, e) {
 
     setFun((prev) => ({
         ...prev,
-        [name]: value.trim(),
+        [name]: value,
     }));
 }

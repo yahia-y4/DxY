@@ -1,4 +1,7 @@
 export function searchFun(data = [], value, columns = []) {
+    if(!value.trim()){
+        return data
+    }
   return data.filter((item) => {
     return columns.some((column) => {
       return String(item[column] ?? "")

@@ -7,16 +7,23 @@ import { useState } from "react";
 export default function Search({ onSearch, onCancel, w }) {
   const [inputValue, setInputValue] = useState("");
   function handleInput(e) {
-    const value = e.target.value.trim();
+    const value = e.target.value;
     setInputValue(value);
+  }
+  function empty(){
+    setInputValue("")
+   
   }
   return (
     <div className="search-div" style={{ width: w }}>
-      <Input onChange={handleInput} />
+      <Input value={inputValue} onChange={handleInput} />
       <div className="search-butn" onClick={() => onSearch(inputValue)}>
         <SearchIcon style={{ fontSize: "30px" }} />
       </div>
-      <div className="search-butn" onClick={onCancel}>
+      <div className="search-butn" onClick={()=>{
+        onCancel()
+        empty()
+      }}>
         <CancelOutlinedIcon style={{ fontSize: "27px" }} />
       </div>
     </div>
