@@ -75,6 +75,7 @@ function status() {
           />
         </div>
         <InfoWin
+          notCenter={true}
           data={selectedTreatmentPlan.description}
           h={"55%"}
           w={"100%"}

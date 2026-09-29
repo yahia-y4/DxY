@@ -15,13 +15,16 @@
   color: var(--text1);
   border-radius: 10px;
   padding: 5px;
+  overflow: auto;
 }
 
 .infoWin-div-not-center {
+ white-space: pre-wrap;
   width: 100%;
   height: 100%;
   background-color: var(--win);
   color: var(--text1);
   border-radius: 10px;
   padding: 5px;
+  overflow: auto;
 }

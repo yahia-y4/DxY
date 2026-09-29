@@ -72,24 +72,28 @@ export default function PatientSessionsInfo() {
       </section>
       <section className="section-2">
         <InfoWin
+        notCenter={true}
           data={selectedSession.diagnosis}
           lable={"التشخيص : "}
           h={"120px"}
           w={"70%"}
         />
         <InfoWin
+        notCenter={true}
           data={selectedSession.treatment}
           lable={"المعالجة : "}
           h={"120px"}
           w={"70%"}
         />
         <InfoWin
+        notCenter={true}
           data={selectedSession.prescribed_medication}
           lable={"الادوية الموصوفة : "}
           h={"120px"}
           w={"70%"}
         />
         <InfoWin
+        notCenter={true}
           data={selectedSession.description}
           lable={"الوصف  : "}
           h={"120px"}
