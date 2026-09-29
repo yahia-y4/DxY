@@ -36,13 +36,13 @@ class StatisticsController extends Controller
     public function getAppointmentsDayCount(Request $request){
         $doctorId = $request->user()->id;
         $date = $request->query('date',now()->toDateString());
-        $count =  Appointment::where('doctor_id', $doctorId)->whereDate('created_at', $date)->count();
+        $count =  Appointment::where('doctor_id', $doctorId)->whereDate('appointment_date', $date)->count();
         return response()->json(['count' => $count]);
     }
     public function getDoingAppointmentsDayCount(Request $request){
         $doctorId = $request->user()->id;
         $date = $request->query('date',now()->toDateString());
-        $count =  Appointment::where('doctor_id', $doctorId)->where('status','approved')->whereDate('created_at', $date)->count();
+        $count =  Appointment::where('doctor_id', $doctorId)->where('status','approved')->whereDate('appointment_date', $date)->count();
         return response()->json(['count' => $count]);
     }
     // -- count --
