@@ -2,11 +2,18 @@ import Input from "../input/input";
 import "./search.css";
 import SearchIcon from "@mui/icons-material/Search";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
+import { useState } from "react";
+
 export default function Search({ onSearch, onCancel, w }) {
+  const [inputValue, setInputValue] = useState("");
+  function handleInput(e) {
+    const value = e.target.value.trim();
+    setInputValue(value);
+  }
   return (
     <div className="search-div" style={{ width: w }}>
-      <Input />
-      <div className="search-butn" onClick={onSearch}>
+      <Input onChange={handleInput} />
+      <div className="search-butn" onClick={() => onSearch(inputValue)}>
         <SearchIcon style={{ fontSize: "30px" }} />
       </div>
       <div className="search-butn" onClick={onCancel}>

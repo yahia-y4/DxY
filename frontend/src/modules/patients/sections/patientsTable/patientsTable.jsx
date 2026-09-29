@@ -17,12 +17,14 @@ const {data ,isLoading,isError,error,hasToken} = usePatients()
   } = useContext(PatientsContext);
     //---------
 
-console.log(data)
+
 // functions 
   function handleRowClick(patient) {
     setSelectedPatient(patient);
     handleArrayState(setSelectedPatientSection,0,"patientProfile");
   }
+
+ 
   //------
   const columns = [
     { name: "id", label: "ID" },
@@ -36,7 +38,7 @@ console.log(data)
 
   return (
     <div className="patientsTable">
-      <Search w={"70%"} />
+      <Search onSearch={""} w={"70%"} />
 
       <Table onRowClick={handleRowClick} data={data} columns={columns} w={"70%"} h={"70%"}></Table>
       <AddButton onClick={()=>{handleArrayState(setSelectedPatientSection,0,"patientAdd")}} />
