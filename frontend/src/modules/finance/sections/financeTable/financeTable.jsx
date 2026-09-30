@@ -6,8 +6,10 @@ import { useGetFinance } from "../../queries/useGetFinance";
 import { useQueryUI } from "../../../../hooks/useQueryUI";
 import { formatDate } from "../../../../helperFunctions/formatDate";
 import { useState } from "react";
+import {searchFun} from "../../../../helperFunctions/searchFun";
 export default function FinanceTable() {
 const [financeState,setFinanceState] = useState("charges")
+  const [searchValue, setSearchValue] = useState("");
 const finance = useGetFinance();
 
 useQueryUI(finance);
@@ -21,6 +23,12 @@ data = finance.data?.payment ?? [];
 function handleFinanceState(){
   financeState == "payment"? setFinanceState("charges") : setFinanceState("payment");
 }
+  function handleSearch(value) {
+    setSearchValue(value);
+  }
+  function handleCancel() {
+     setSearchValue("");
+  }
 //
   const columns = [
     { name: (finance)=>{
@@ -31,7 +39,7 @@ function handleFinanceState(){
     { name: (finance)=>formatDate(finance.created_at), label: "التاريخ" },
     { name: "note", label: "ملاحظة" },
   ];
-
+  const tableData = searchFun(data ?? [],searchValue,["name","amount","note"]);
   return (
     <div className="financeTable">
       <section className="section-1">
@@ -39,9 +47,9 @@ function handleFinanceState(){
           <ListButton onClick={handleFinanceState} selected={financeState == "charges"} label={"الديون"} />
           <ListButton onClick={handleFinanceState} selected={financeState == "payment"} label={"الدفعات"} />
         </div>
-        <Search />
+        <Search onSearch={handleSearch} onCancel={handleCancel} />
       </section>
-      <Table data={data} columns={columns} w={"95%"} />
+      <Table data={tableData} columns={columns} w={"95%"} />
     </div>
   );
 }

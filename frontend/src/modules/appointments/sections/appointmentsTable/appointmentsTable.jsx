@@ -1,5 +1,4 @@
 import ListButton from "../../../../components/listButton/listButton";
-import Search from "../../../../components/search/search";
 import Table from "../../../../components/table/table";
 import "./appointmentsTable.css";
 import { useAppo } from "../../context/useAppo";
@@ -66,7 +65,7 @@ const tableData = handleTableData();
           <ListButton selected={appoState == "pending"} onClick={()=>setAppoState("pending")} label={"المواعيد المنتظرة"} />
           <ListButton selected={appoState == "rejected"} onClick={()=>setAppoState("rejected")} label={"المواعيد الملغية"} />
         </div>
-        <Search w={"40%"} />
+        {/* <Search w={"40%"} /> */}
       </section>
       <section className="section-2">
         <Table

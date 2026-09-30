@@ -6,10 +6,11 @@ import PatientSessionsAdd from "./patientSessionsAdd/patientSessionsAdd";
 import ForwardIcon from "@mui/icons-material/Forward";
 import PatientSessionsInfo from "./patientSessionsInfo/patientSessionsInfo";
 import { handleArrayState } from "../../../../../helperFunctions/handleArrayState";
-import { useContext } from "react";
+import { useContext,useState } from "react";
 import { PatientsContext } from "../../../context/patientsContext";
 import { useGetSessions } from "../../../../sessions/queries/useGetSessions";
 import { formatDate } from "../../../../../helperFunctions/formatDate";
+import { searchFun } from "../../../../../helperFunctions/searchFun";
 import PatientSessionsEdit from "./patientSessionsEdit/patientSessionsEdit";
 export default function PatientSessions() {
   const {
@@ -20,6 +21,7 @@ export default function PatientSessions() {
   } = useContext(PatientsContext);
 
   const { data: sessions = [] } = useGetSessions();
+    const [searchValue, setSearchValue] = useState("");
 
   const patientSessions = sessions.filter(
     (session) => session.patient?.id === selectedPatient?.id
@@ -30,13 +32,12 @@ export default function PatientSessions() {
     { name: "name", label: "الجلسة" },
     { name: (s)=> formatDate(s.created_at), label: "تاريخ الجلسة" },
   ];
+  //functions 
 
   function back() {
     handleArrayState(setSelectedPatientSection, 1, null);
     handleArrayState(setSelectedPatientSection, 2, null);
   }
-
-
   function onRowClick(session) {
     handleArrayState(
       setSelectedPatientSection,
@@ -45,7 +46,15 @@ export default function PatientSessions() {
     );
     setSelectedSession(session);
   }
+    function handleSearch(value) {
+    setSearchValue(value);
+  }
+  function handleCancel() {
+     setSearchValue("");
+  }
+  //-----------
 
+  const tableData = searchFun(patientSessions ?? [],searchValue,["name"]);
   return (
     <div className="patient-sessions">
       <div className="patient-sessions-content">
@@ -56,12 +65,12 @@ export default function PatientSessions() {
               icon={<ForwardIcon style={{ fontSize: "35px" }} />}
             />
 
-            <Search w={"95%"} />
+            <Search onSearch={handleSearch} onCancel={handleCancel} w={"95%"} />
           </div>
 
           <Table
             onRowClick={onRowClick}
-            data={patientSessions}
+            data={tableData}
             columns={columns}
             w={"95%"}
           />

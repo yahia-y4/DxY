@@ -6,36 +6,51 @@ import { useSession } from "../../context/useSession";
 import { useGetSessions } from "../../queries/useGetSessions";
 import { handleArrayState } from "../../../../helperFunctions/handleArrayState";
 import { useQueryUI } from "../../../../hooks/useQueryUI";
-import {formatDate} from "../../../../helperFunctions/formatDate"
+import { formatDate } from "../../../../helperFunctions/formatDate";
+import { useState } from "react";
+import { searchFun } from "../../../../helperFunctions/searchFun";
 export default function SectionsTable() {
-  const columns = [
-    { name: "id", label: "ID" },
-    { name: (session)=>session?.patient.name, label: "الاسم" },
-    { name: (session)=>session?.patient.father_name, label: "الاب" },
-    { name: (session)=>session?.patient.nick_name, label: "الكنية" },
-    { name: "name", label: "الجلسة" },
-    { name: (session)=>formatDate(session.created_at), label: "تاريخ الجلسة" },
- 
-  ];
-
-const {setCurrentSession,setSelectedSession} = useSession()
-const {data ,isLoading,isError,error,hasToken} = useGetSessions()
-useQueryUI({isLoading,isError,error,hasToken})
+  const [searchValue, setSearchValue] = useState("");
+  const { setCurrentSession, setSelectedSession } = useSession();
+  const { data, isLoading, isError, error, hasToken } = useGetSessions();
+  useQueryUI({ isLoading, isError, error, hasToken });
 
   // functions
   function onRowClick(session) {
-    setSelectedSession(session)
-    handleArrayState(setCurrentSession,0,"sessionInfo")
+    setSelectedSession(session);
+    handleArrayState(setCurrentSession, 0, "sessionInfo");
   }
-  function addSession(){
-    handleArrayState(setCurrentSession,0,"sessionAdd")
+  function addSession() {
+    handleArrayState(setCurrentSession, 0, "sessionAdd");
+  }
+  function handleSearch(value) {
+    setSearchValue(value);
+  }
+  function handleCancel() {
+    setSearchValue("");
   }
   //
- 
+  const columns = [
+    { name: "id", label: "ID" },
+    { name: (session) => session?.patient.name, label: "الاسم" },
+    { name: (session) => session?.patient.father_name, label: "الاب" },
+    { name: (session) => session?.patient.nick_name, label: "الكنية" },
+    { name: "name", label: "الجلسة" },
+    {
+      name: (session) => formatDate(session.created_at),
+      label: "تاريخ الجلسة",
+    },
+  ];
+  const tableData = searchFun(data ?? [], searchValue, ["name"]);
   return (
     <div className="sessionsTable">
-      <Search w={"90%"} />
-      <Table onRowClick={onRowClick} columns={columns} data={data} w={"90%"} />
+      <Search onSearch={handleSearch} onCancel={handleCancel} w={"90%"} />
+      <Table
+        onRowClick={onRowClick}
+        columns={columns}
+        data={tableData}
+        w={"90%"}
+      />
       <AddButton onClick={addSession} />
     </div>
   );

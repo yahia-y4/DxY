@@ -5,7 +5,10 @@ import { useGetTreatmentPlans } from "../../queries/useGetTreatmentPlans";
 import { useQueryUI } from "../../../../hooks/useQueryUI";
 import { formatDate } from "../../../../helperFunctions/formatDate";
 import { useTreatmentPlan } from "../../context/useTreatmentPlan";
+import { useState } from "react";
+import { searchFun } from "../../../../helperFunctions/searchFun";
 export default function TreatmentPlansTable() {
+  const [searchValue, setSearchValue] = useState("");
   const { setCurrentTreatmentPlan, setSelectedTreatmentPlan } =
     useTreatmentPlan();
   const { data, isLoading, isError, error, hasToken } = useGetTreatmentPlans();
@@ -16,9 +19,14 @@ export default function TreatmentPlansTable() {
     setSelectedTreatmentPlan(treatmentPlan);
     setCurrentTreatmentPlan("treatmentPlanInfo");
   }
+  function handleSearch(value) {
+    setSearchValue(value);
+  }
+  function handleCancel() {
+    setSearchValue("");
+  }
   //--------
 
-  //------------
   const columns = [
     { name: "name", label: "الخطة" },
     {
@@ -34,10 +42,17 @@ export default function TreatmentPlansTable() {
       label: "تاريخ بدء الخطة",
     },
   ];
+
+  const tableData = searchFun(data ?? [], searchValue, ["name"]);
   return (
     <div className="treatmentPlans-Table">
-      <Search w={"90%"} />
-      <Table onRowClick={onRowClick} data={data} columns={columns} w={"90%"} />
+      <Search onSearch={handleSearch} onCancel={handleCancel} w={"90%"} />
+      <Table
+        onRowClick={onRowClick}
+        data={tableData}
+        columns={columns}
+        w={"90%"}
+      />
     </div>
   );
 }

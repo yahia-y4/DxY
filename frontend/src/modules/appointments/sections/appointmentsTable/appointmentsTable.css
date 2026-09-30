@@ -16,10 +16,12 @@
     justify-content: center;
 }
 .appointmentsTable .section-1 .control-buts{
-    width: 55%;
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 20px;
+  
 }
 
 .appointmentsTable .section-2{

@@ -17,9 +17,7 @@ export default function FinanceTable() {
   let payment = finance.data?.payment?.filter((payment)=>payment?.patient_id == selectedPatient?.id);
 
 
-  
 
-  
   //functions
   function handleFinanceState(){
     financeState == "payment"? setFinanceState("charges") : setFinanceState("payment");

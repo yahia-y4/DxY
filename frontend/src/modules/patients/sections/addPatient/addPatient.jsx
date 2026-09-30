@@ -35,7 +35,6 @@ export default function AddPatient() {
       },
     });
   }
-
   function emptyData() {
     setFormData({
       name: "",
