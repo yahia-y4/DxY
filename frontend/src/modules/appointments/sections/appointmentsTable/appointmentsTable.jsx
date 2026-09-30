@@ -6,11 +6,14 @@ import { useAppo } from "../../context/useAppo";
 import { useGetAppo } from "../../queries/useGetAppo";
 import { useQueryUI } from "../../../../hooks/useQueryUI";
 import { getDayName } from "../../../../helperFunctions/getDayName";
+import { getToday } from "../../../../helperFunctions/getToday";
+import { useState } from "react";
 export default function AppointmentsTable() {
   const { setAppoSection, setSelectedAppo } = useAppo();
-  const { data, isError, error, isLoading, hasToken } = useGetAppo();
+  const { data , isError, error, isLoading, hasToken } = useGetAppo();
   useQueryUI({ data, isError, error, isLoading, hasToken });
-
+  const [appoState,setAppoState] = useState("all") // all | day | approved | rejected | pending
+console.log(data)
   //functions
   function onRowClick(appo) {
     setSelectedAppo(appo);
@@ -22,8 +25,23 @@ export default function AppointmentsTable() {
     else if (status == "rejected") _status = "ملغي";
     return _status;
   }
+  function handleTableData(){
+    if(appoState == "all"){
+      return data;
+    }
+    if(appoState == "day"){
+      const toDay = getToday();
+      const newData = data.filter((i)=> i.appointment_date == toDay)
+      return newData
+    }
+    return data.filter((i)=>i.status == appoState)
+  }
   //--------
 
+
+
+
+const tableData = handleTableData();
   const columns = [
     {
       name: (appo) => {
@@ -42,19 +60,18 @@ export default function AppointmentsTable() {
     <div className="appointmentsTable">
       <section className="section-1">
         <div className="control-buts">
-          <ListButton selected={true} label={"الكل"} />
-          <ListButton label={"مواعيد اليوم"} />
-          <ListButton label={"المواعيد التامة"} />
-          <ListButton label={"المواعيد المنتظرة"} />
-          <ListButton label={"المواعيد الملغية"} />
-          <ListButton label={"اضافة موعد"} />
+          <ListButton selected={appoState == "all"} onClick={()=>setAppoState("all")} label={"الكل"} />
+          <ListButton selected={appoState == "day"} onClick={()=>setAppoState("day")} label={"مواعيد اليوم"} />
+          <ListButton selected={appoState == "approved"} onClick={()=>setAppoState("approved")} label={"المواعيد التامة"} />
+          <ListButton selected={appoState == "pending"} onClick={()=>setAppoState("pending")} label={"المواعيد المنتظرة"} />
+          <ListButton selected={appoState == "rejected"} onClick={()=>setAppoState("rejected")} label={"المواعيد الملغية"} />
         </div>
         <Search w={"40%"} />
       </section>
       <section className="section-2">
         <Table
           onRowClick={onRowClick}
-          data={data}
+          data={tableData}
           columns={columns}
           w={"95%"}
         />
