@@ -21,11 +21,11 @@ export default function AddPatient() {
     allergies: "",
     chronic_diseases: "",
     current_medications: "",
-    status: "",
+    status: "treatment",
     outstanding_balance: 0,
   });
-const createPatient = useCreatePatient();
-useQueryUI(createPatient);
+  const createPatient = useCreatePatient();
+  useQueryUI(createPatient);
   //functions
   function onSubmit() {
     createPatient.mutate(formData, {
@@ -36,6 +36,21 @@ useQueryUI(createPatient);
     });
   }
 
+  function emptyData() {
+    setFormData({
+      name: "",
+      father_name: "",
+      nick_name: "",
+      identity_card_number: "",
+      dirth_date: "",
+      description: "",
+      allergies: "",
+      chronic_diseases: "",
+      current_medications: "",
+      status: "treatment",
+      outstanding_balance: 0,
+    });
+  }
 
   //---------
   return (
@@ -67,21 +82,16 @@ useQueryUI(createPatient);
             onChange={(e) => handleInputs(setFormData, e)}
           />
           <Input
+          type="date"
             name={"dirth_date"}
             label={"تاريخ الميلاد"}
             value={formData.dirth_date}
             onChange={(e) => handleInputs(setFormData, e)}
           />
-          <Input
-            name={"status"}
-            label={"الحالة"}
-            value={formData.status}
-            onChange={(e) => handleInputs(setFormData, e)}
-          />
 
           <div className="buts">
             <Button onClick={onSubmit} lable={"اضافة"} />
-            <Button lable={"محو"} />
+            <Button onClick={emptyData} lable={"محو"} />
             <Button
               onClick={() => {
                 handleArrayState(setSelectedPatientSection, 0, "patientsTable");
