@@ -7,6 +7,7 @@ export const useGetFinance = () => {
     queryKey: ["finance"],
     queryFn: getFinanceAPI,
     enabled: !!token,
+    staleTime: Infinity,
   });
   return {
     ...query,

@@ -7,6 +7,7 @@ export const useGetSessions = () => {
     queryKey: ["sessions"],
     queryFn: getSessionsAPI,
     enabled: !!token,
+    staleTime: Infinity,
   });
   return {
     ...query,

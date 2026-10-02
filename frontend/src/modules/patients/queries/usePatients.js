@@ -8,6 +8,7 @@ export const usePatients = () => {
     queryKey: ["patients"],
     queryFn: getPatientsAPI,
     enabled: !!token,
+    staleTime: Infinity,
   });
   return {
     ...query,

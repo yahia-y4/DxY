@@ -5,8 +5,9 @@ export const useGetAppo = () => {
   const token = getToken();
   const query = useQuery({
     queryKey: ["appointments"],
-    queryFn:getAppoAPI ,
+    queryFn: getAppoAPI,
     enabled: !!token,
+    staleTime: Infinity,
   });
   return {
     ...query,

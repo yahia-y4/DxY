@@ -7,6 +7,7 @@ export const useGetTreatmentPlans = () => {
     queryKey: ["treatmentPlans"],
     queryFn: getTreatmentPlansAPI,
     enabled: !!token,
+    staleTime: Infinity,
   });
   return {
     ...query,
