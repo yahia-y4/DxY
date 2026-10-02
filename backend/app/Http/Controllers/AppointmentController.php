@@ -9,7 +9,7 @@ class AppointmentController extends Controller
 {
 
 public function index(Request $request){
-    $appointments = Appointment::where('doctor_id', $request->user()->id)->with("patient")->get();
+    $appointments = Appointment::where('doctor_id', $request->user()->id)->with("patient")->latest()->get();
     return response()->json(["appointments"=>$appointments]);
 }
 
