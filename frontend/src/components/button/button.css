@@ -1,13 +1,13 @@
-.Button{
-     background-color: var(--win);
+.Button {
+    background-color: var(--win);
     color: var(--text1);
     border: none;
     padding: 10px 20px;
     border-radius: 10px;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 18px;
 }
 
-.Button:hover{
+.Button:hover {
     background-color: var(--hover);
 }

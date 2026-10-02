@@ -8,11 +8,12 @@ import { handleArrayState } from "../../../../../helperFunctions/handleArrayStat
 import { PatientsContext } from "../../../context/patientsContext";
 import { useContext, useState } from "react";
 import { useEditPatient } from "../../../queries/useEditPatient";
+import { useError } from "../../../../../context/errorContext/useError";
 export default function PatientEdit() {
-  const { setSelectedPatientSection, selectedPatient,setSelectedPatient} = useContext(PatientsContext);
-
+  const { setSelectedPatientSection, selectedPatient, setSelectedPatient } =
+    useContext(PatientsContext);
   const [formData, setFormData] = useState({
-    id:selectedPatient.id,
+    id: selectedPatient.id,
     name: selectedPatient.name,
     father_name: selectedPatient.father_name,
     nick_name: selectedPatient.nick_name,
@@ -25,34 +26,36 @@ export default function PatientEdit() {
     status: selectedPatient.status,
     outstanding_balance: selectedPatient.outstanding_balance,
   });
-
   const editPatient = useEditPatient();
-//   useQueryUI(editPatient)  // اصلاح فيما بعد
+  const { showError } = useError();
   //functions
   function onSubmit() {
-    editPatient.mutate(formData,{
-        onSuccess:(updatedPatient)=>{
-            console.log(updatedPatient);
-             handleArrayState(setSelectedPatientSection, 1, null)
-             setSelectedPatient(updatedPatient)
-        }
-    })
+    editPatient.mutate(formData, {
+      onSuccess: (updatedPatient) => {
+        console.log(updatedPatient);
+        handleArrayState(setSelectedPatientSection, 1, null);
+        setSelectedPatient(updatedPatient);
+      },
+      onError: (e) => {
+        showError(e.message || "خطأ في تعديل بيانات المريض");
+      },
+    });
   }
-  function emptyDataFrom(){
+  function emptyDataFrom() {
     setFormData({
-    id:selectedPatient.id,    
-    name: "",
-    father_name: "",
-    nick_name: "",
-    identity_card_number: "",
-    dirth_date: "",
-    description: "",
-    allergies: "",
-    chronic_diseases: "",
-    current_medications: "",
-    status: "",
-    outstanding_balance: 0,
-    })
+      id: selectedPatient.id,
+      name: "",
+      father_name: "",
+      nick_name: "",
+      identity_card_number: "",
+      dirth_date: "",
+      description: "",
+      allergies: "",
+      chronic_diseases: "",
+      current_medications: "",
+      status: "",
+      outstanding_balance: 0,
+    });
   }
   //-----------
   return (
@@ -104,7 +107,7 @@ export default function PatientEdit() {
 
           <div className="buts">
             <Button labelC={"#fff"} onClick={onSubmit} lable={"تعديل"} />
-            <Button labelC={"#fff"} lable={"محو"}  onClick={emptyDataFrom}/>
+            <Button labelC={"#fff"} lable={"محو"} onClick={emptyDataFrom} />
             <Button
               labelC={"#fff"}
               onClick={() =>

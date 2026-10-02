@@ -1,10 +1,10 @@
 import "./addToothWin.css";
 
-export default function AddToothWin({ w, h, title ,number,vertical,horizontal , onToothClick}) {
+export default function AddToothWin({ w, h, title ,number,vertical,horizontal, onToothClick}) {
   return (
     <div className="addToothWin-div" style={{ width: w, height: h }}>
       <p className="title">{title}</p>
-      <div className="addToothWin-content">
+      <div className={"addToothWin-content" }>
         <section className="top-right">
           <div onClick={()=>onToothClick({number:1,vertical:"top",horizontal:"right"})} className={(number ==1 && vertical =="top" && horizontal =="right")? "selectedTooth":"one-tooth"}>1</div>
           <div onClick={()=>onToothClick({number:2,vertical:"top",horizontal:"right"})} className={(number ==2 && vertical =="top" && horizontal =="right")? "selectedTooth":"one-tooth"}>2</div>

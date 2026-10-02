@@ -14,11 +14,11 @@ export default function Warning() {
     <div className="warning-div">
       <div className="warning-win">
         <p>{warning}</p>
-        <div className="warning-buts">
+      </div>
+      <div className="warning-buts">
           <Button onClick={handleConfirm} lable={"موافق"} />
           <Button onClick={hideWarning} lable={"الغاء"} />
         </div>
-      </div>
     </div>
   );
 }

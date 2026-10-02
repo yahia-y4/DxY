@@ -1,10 +1,10 @@
 :root {
   --text1: #fff;
   --text2: #000;
-  --bg: #b2e4e6;
+  --bg: #678fa769;
   --win:#075985;
-  --border: #e5e4e7;
-  --hover: #0c4a6e;
+  --border: #e5e4e7b2;
+  --hover: #0b3f5e;
   --TopTableColor: #0c4a6e;
   --shadow: #0000001a 0 10px 15px -3px, #0000000d 0 4px 6px -2px;
 }

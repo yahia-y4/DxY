@@ -1,5 +1,4 @@
 import "./patientSessionsEdit.css";
-
 import { useState } from "react";
 import { chooseToothState } from "../../../../../../helperFunctions/chooseToothState";
 import { handleInputs } from "../../../../../../helperFunctions/handleInputs";
@@ -13,10 +12,11 @@ import { useContext } from "react";
 import { PatientsContext } from "../../../../context/patientsContext";
 import { useError } from "../../../../../../context/errorContext/useError";
 export default function PatientSessionsEdit() {
-  const { selectedSession ,setSelectedSession , setSelectedPatientSection} = useContext(PatientsContext);
-  const {showError} = useError()
+  const { selectedSession, setSelectedSession, setSelectedPatientSection } =
+    useContext(PatientsContext);
+  const { showError } = useError();
   const [formData, setFormData] = useState({
-    id:selectedSession.id,
+    id: selectedSession.id,
     treatment_plan_id: null,
     name: selectedSession.name,
     description: selectedSession.description,
@@ -28,42 +28,40 @@ export default function PatientSessionsEdit() {
     teeth_horizontal: selectedSession.teeth_horizontal,
   });
 
-
-const editSession = useEditSession()
-
+  const editSession = useEditSession();
 
   //functions-------
-function handleEditSession(){
-  editSession.mutate(formData,{
-    onSuccess:(session)=>{
-      setSelectedSession(session)
-      back();
-    },
-    onError:()=>{
-        showError("خطا في تعديل معلومات هذه الجلسة")
-    }
-  })
-}
+  function handleEditSession() {
+    editSession.mutate(formData, {
+      onSuccess: (session) => {
+        setSelectedSession(session);
+        back();
+      },
+      onError: () => {
+        showError("خطا في تعديل معلومات هذه الجلسة");
+      },
+    });
+  }
 
   function onToothClick(tooth) {
     chooseToothState(setFormData, formData, tooth);
   }
   function back() {
-    handleArrayState(setSelectedPatientSection,3, null);
+    handleArrayState(setSelectedPatientSection, 3, null);
   }
-  function emptyFormData(){
+  function emptyFormData() {
     setFormData({
-    id:selectedSession.id,
-    treatment_plan_id: null,
-    name: "",
-    description: "",
-    diagnosis: "",
-    treatment: "",
-    prescribed_medication: "",
-    teeth_number: 0,
-    teeth_vertical: "",
-    teeth_horizontal: "",
-    })
+      id: selectedSession.id,
+      treatment_plan_id: null,
+      name: "",
+      description: "",
+      diagnosis: "",
+      treatment: "",
+      prescribed_medication: "",
+      teeth_number: 0,
+      teeth_vertical: "",
+      teeth_horizontal: "",
+    });
   }
   //---------
 
@@ -72,6 +70,7 @@ function handleEditSession(){
       <section className="section-1">
         <div className="form">
           <Input
+            labelC={"#fff"}
             onChange={(e) => handleInputs(setFormData, e)}
             name={"name"}
             value={formData.name}
@@ -95,7 +94,7 @@ function handleEditSession(){
       </section>
       <section className="section-2">
         <Textarea
-           labelC={"#fff"}
+          labelC={"#fff"}
           onChange={(e) => handleInputs(setFormData, e)}
           value={formData.diagnosis}
           name={"diagnosis"}
@@ -103,8 +102,7 @@ function handleEditSession(){
           h={"150px"}
         />
         <Textarea
-                   labelC={"#fff"}
-
+          labelC={"#fff"}
           onChange={(e) => handleInputs(setFormData, e)}
           value={formData.treatment}
           name={"treatment"}
@@ -112,8 +110,7 @@ function handleEditSession(){
           h={"150px"}
         />
         <Textarea
-                   labelC={"#fff"}
-
+          labelC={"#fff"}
           onChange={(e) => handleInputs(setFormData, e)}
           value={formData.prescribed_medication}
           name={"prescribed_medication"}
@@ -121,8 +118,7 @@ function handleEditSession(){
           h={"150px"}
         />
         <Textarea
-                   labelC={"#fff"}
-
+          labelC={"#fff"}
           onChange={(e) => handleInputs(setFormData, e)}
           value={formData.description}
           name={"description"}

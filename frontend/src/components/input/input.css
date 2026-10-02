@@ -10,7 +10,7 @@
 }
 .input-div input{
     width: 100%;
-    padding: 4px;
+    padding: 5px;
     border: 1px solid var(--border);
     background-color: var(--win);
     border-radius: 7px;

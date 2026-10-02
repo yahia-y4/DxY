@@ -1,6 +1,5 @@
-.TreatmentPlanEdit-div{
-  
-       position: fixed;
+.TreatmentPlanEdit-div {
+    position: fixed;
     inset: 0;
     z-index: 1000;
     width: 100%;
@@ -14,10 +13,10 @@
     backdrop-filter: blur(10);
     overflow: auto;
     z-index: 999;
-   color: #fff;
+    color: #fff;
 }
 
-.TreatmentPlanEdit-form{
+.TreatmentPlanEdit-form {
     width: 30%;
     height: 85%;
     min-width: 300px;
@@ -26,7 +25,7 @@
     gap: 10px;
 }
 
-.TreatmentPlanEdit-form .status-buts{
+.TreatmentPlanEdit-form .status-buts {
     width: 100%;
     display: flex;
     align-items: center;
@@ -34,7 +33,7 @@
     gap: 10px;
 }
 
-.TreatmentPlanEdit-form .edit-buts{
+.TreatmentPlanEdit-form .edit-buts {
     width: 100%;
     display: flex;
     align-items: center;

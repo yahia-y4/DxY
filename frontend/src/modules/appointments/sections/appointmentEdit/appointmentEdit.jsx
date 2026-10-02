@@ -29,8 +29,8 @@ export default function AppointmentEdit() {
         setSelectedAppo(appo);
         back();
       },
-      onError: () => {
-        showError("خطا في تعديل الموعد")
+      onError: (e) => {
+        showError( e.message || "خطا في تعديل الموعد")
       },
       
     });

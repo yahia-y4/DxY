@@ -70,6 +70,7 @@ function handleEditSession(){
             name={"name"}
             value={formData.name}
             label={"اسم الجلسة"}
+            labelC={"#fff"}
           />
         </div>
         <AddToothWin

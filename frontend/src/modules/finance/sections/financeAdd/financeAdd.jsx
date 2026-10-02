@@ -27,8 +27,8 @@ export default function FinanceAdd() {
       onSuccess: () => {
         emptyData();
       },
-      onError: () => {
-        showError("خطا في اضافة الدين");
+      onError: (e) => {
+        showError(e.message || "خطا في اضافة الدين");
       },
     });
   }
@@ -37,8 +37,8 @@ export default function FinanceAdd() {
       onSuccess: () => {
         emptyData();
       },
-      onError: () => {
-        showError("خطا في استلام الدفعة");
+      onError: (e) => {
+        showError(e.message || "خطا في استلام الدفعة");
       },
     });
   }

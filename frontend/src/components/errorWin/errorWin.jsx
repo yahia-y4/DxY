@@ -11,8 +11,8 @@ export default function ErrorWin() {
     <div className="error-div">
       <div className="error">
         <p>{message}</p>
-        <Button lable={"الغاء"} onClick={hideError} />
       </div>
+      <Button lable={"الغاء"} onClick={hideError} />
     </div>
   );
 }
