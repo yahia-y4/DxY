@@ -13,6 +13,7 @@ export default function AddToothWin({ w, h, title ,number,vertical,horizontal, o
           <div onClick={()=>onToothClick({number:5,vertical:"top",horizontal:"right"})} className={(number ==5 && vertical =="top" && horizontal =="right")? "selectedTooth":"one-tooth"}>5</div>
           <div onClick={()=>onToothClick({number:6,vertical:"top",horizontal:"right"})} className={(number ==6 && vertical =="top" && horizontal =="right")? "selectedTooth":"one-tooth"}>6</div>
           <div onClick={()=>onToothClick({number:7,vertical:"top",horizontal:"right"})} className={(number ==7 && vertical =="top" && horizontal =="right")? "selectedTooth":"one-tooth"}>7</div>
+          <div onClick={()=>onToothClick({number:8,vertical:"top",horizontal:"right"})} className={(number ==8 && vertical =="top" && horizontal =="right")? "selectedTooth":"one-tooth"}>8</div>
         </section>
         <section className="top-left">
           <div onClick={()=>onToothClick({number:1,vertical:"top",horizontal:"left"})} className={(number ==1 && vertical =="top" && horizontal =="left")? "selectedTooth":"one-tooth"}>1</div>
@@ -22,6 +23,7 @@ export default function AddToothWin({ w, h, title ,number,vertical,horizontal, o
           <div onClick={()=>onToothClick({number:5,vertical:"top",horizontal:"left"})} className={(number ==5 && vertical =="top" && horizontal =="left")? "selectedTooth":"one-tooth"}>5</div>
           <div onClick={()=>onToothClick({number:6,vertical:"top",horizontal:"left"})} className={(number ==6 && vertical =="top" && horizontal =="left")? "selectedTooth":"one-tooth"}>6</div>
           <div onClick={()=>onToothClick({number:7,vertical:"top",horizontal:"left"})} className={(number ==7 && vertical =="top" && horizontal =="left")? "selectedTooth":"one-tooth"}>7</div>
+          <div onClick={()=>onToothClick({number:8,vertical:"top",horizontal:"left"})} className={(number ==8 && vertical =="top" && horizontal =="left")? "selectedTooth":"one-tooth"}>8</div>
         </section>
         <section className="bottom-right">
           <div onClick={()=>onToothClick({number:1,vertical:"bottom",horizontal:"right"})} className={(number ==1 && vertical =="bottom" && horizontal =="right")? "selectedTooth":"one-tooth"}>1</div>
@@ -31,6 +33,7 @@ export default function AddToothWin({ w, h, title ,number,vertical,horizontal, o
           <div onClick={()=>onToothClick({number:5,vertical:"bottom",horizontal:"right"})} className={(number ==5 && vertical =="bottom" && horizontal =="right")? "selectedTooth":"one-tooth"}>5</div>
           <div onClick={()=>onToothClick({number:6,vertical:"bottom",horizontal:"right"})} className={(number ==6 && vertical =="bottom" && horizontal =="right")? "selectedTooth":"one-tooth"}>6</div>
           <div onClick={()=>onToothClick({number:7,vertical:"bottom",horizontal:"right"})} className={(number ==7 && vertical =="bottom" && horizontal =="right")? "selectedTooth":"one-tooth"}>7</div>
+          <div onClick={()=>onToothClick({number:8,vertical:"bottom",horizontal:"right"})} className={(number ==8 && vertical =="bottom" && horizontal =="right")? "selectedTooth":"one-tooth"}>8</div>
         </section>
         <section className="bottom-left">
           <div onClick={()=>onToothClick({number:1,vertical:"bottom",horizontal:"left"})} className={(number ==1 && vertical =="bottom" && horizontal =="left")? "selectedTooth":"one-tooth"}>1</div>
@@ -40,6 +43,7 @@ export default function AddToothWin({ w, h, title ,number,vertical,horizontal, o
           <div onClick={()=>onToothClick({number:5,vertical:"bottom",horizontal:"left"})}  className={(number ==5 && vertical =="bottom" && horizontal =="left")? "selectedTooth":"one-tooth"}>5</div>
           <div  onClick={()=>onToothClick({number:6,vertical:"bottom",horizontal:"left"})} className={(number ==6 && vertical =="bottom" && horizontal =="left")? "selectedTooth":"one-tooth"}>6</div>
           <div  onClick={()=>onToothClick({number:7,vertical:"bottom",horizontal:"left"})} className={(number ==7 && vertical =="bottom" && horizontal =="left")? "selectedTooth":"one-tooth"}>7</div>
+          <div  onClick={()=>onToothClick({number:8,vertical:"bottom",horizontal:"left"})} className={(number ==8 && vertical =="bottom" && horizontal =="left")? "selectedTooth":"one-tooth"}>8</div>
         </section>
       </div>
     </div>
