@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId("doctor_id")->constrained("doctors");
-            $table->foreignId("patient_id")->constrained("patients");
+            $table->foreignId("patient_id")->constrained("patients")->cascadeOnDelete();
            $table->foreignId("treatment_plan_id")->nullable()->constrained("treatment_plans");
             $table->string("name");
             $table->string("description")->nullable();

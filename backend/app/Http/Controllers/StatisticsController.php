@@ -72,11 +72,10 @@ class StatisticsController extends Controller
     
     }
 
-
     public function getPatientCount(Request $request)
     {
         $doctorId = $request->user()->id;
-        $patientCount = TreatmentSession::where('doctor_id', $doctorId)->distinct('patient_id')->count('patient_id');
+        $patientCount = Patient::where('doctor_id', $doctorId)->count();
 
         return response()->json(['patient_count' => $patientCount], 200);
     }
