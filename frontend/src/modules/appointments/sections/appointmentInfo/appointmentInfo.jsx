@@ -1,8 +1,8 @@
 import "./appointmentInfo.css";
 import AppRegistrationOutlinedIcon from "@mui/icons-material/AppRegistrationOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
-import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
+// import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
+// import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useAppo } from "../../context/useAppo";
 import InfoWin from "../../../../components/infoWin/infoWin";
@@ -55,8 +55,8 @@ export default function AppointmentInfo() {
           onClick={handleDeleteAppoClick}
           icon={<DeleteOutlineOutlinedIcon />}
         />
-        <IconButton icon={<CheckCircleOutlinedIcon />} />
-        <IconButton icon={<CancelOutlinedIcon />} />
+        {/* <IconButton icon={<CheckCircleOutlinedIcon />} />
+        <IconButton icon={<CancelOutlinedIcon />} /> */}
         <IconButton onClick={back} icon={<ArrowBackIcon />} />
       </div>
       <div className="content">

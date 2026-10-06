@@ -24,7 +24,6 @@ export default function TreatmentPlanAdd() {
   function handleAddTreatmentPlan() {
     addTreatmentPlan.mutate(formData, {
       onSuccess: () => {
-        console.log("success");
         emptyFormData();
       },
     });

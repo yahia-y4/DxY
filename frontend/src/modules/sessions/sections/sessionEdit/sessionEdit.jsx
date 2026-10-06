@@ -9,11 +9,12 @@ import { chooseToothState } from "../../../../helperFunctions/chooseToothState";
 import { handleInputs } from "../../../../helperFunctions/handleInputs";
 import { handleArrayState } from "../../../../helperFunctions/handleArrayState";
 import { useEditSession } from "../../queries/useEditSession";
-
+import { useError } from "../../../../context/errorContext/useError";
 export default function SessionEdit() {
-  const { selectedSession ,setSelectedSession, setCurrentSession } = useSession();
+  const { selectedSession, setSelectedSession, setCurrentSession } =
+    useSession();
   const [formData, setFormData] = useState({
-    id:selectedSession.id,
+    id: selectedSession.id,
     treatment_plan_id: null,
     name: selectedSession.name,
     description: selectedSession.description,
@@ -25,19 +26,21 @@ export default function SessionEdit() {
     teeth_horizontal: selectedSession.teeth_horizontal,
   });
 
-
-const editSession = useEditSession()
-
+  const editSession = useEditSession();
+  const { showError } = useError();
 
   //functions-------
-function handleEditSession(){
-  editSession.mutate(formData,{
-    onSuccess:(session)=>{
-      setSelectedSession(session)
-      back();
-    }
-  })
-}
+  function handleEditSession() {
+    editSession.mutate(formData, {
+      onSuccess: (session) => {
+        setSelectedSession(session);
+        back();
+      },
+      onError: (error) => {
+        showError(error.message || "حدث خطأ أثناء تعديل الجلسة");
+      },
+    });
+  }
 
   function onToothClick(tooth) {
     chooseToothState(setFormData, formData, tooth);
@@ -45,19 +48,19 @@ function handleEditSession(){
   function back() {
     handleArrayState(setCurrentSession, 0, "sessionInfo");
   }
-  function emptyFormData(){
+  function emptyFormData() {
     setFormData({
-    id:selectedSession.id,
-    treatment_plan_id: null,
-    name: "",
-    description: "",
-    diagnosis: "",
-    treatment: "",
-    prescribed_medication: "",
-    teeth_number: 0,
-    teeth_vertical: "",
-    teeth_horizontal: "",
-    })
+      id: selectedSession.id,
+      treatment_plan_id: null,
+      name: "",
+      description: "",
+      diagnosis: "",
+      treatment: "",
+      prescribed_medication: "",
+      teeth_number: 0,
+      teeth_vertical: "",
+      teeth_horizontal: "",
+    });
   }
   //---------
 
@@ -90,29 +93,33 @@ function handleEditSession(){
       </section>
       <section className="section-2">
         <Textarea
+          labelC={"#fff"}
           onChange={(e) => handleInputs(setFormData, e)}
-          value={formData.diagnosis}
+          value={formData.diagnosis ?? ""}
           name={"diagnosis"}
           label={"التشخيص"}
           h={"150px"}
         />
         <Textarea
+          labelC={"#fff"}
           onChange={(e) => handleInputs(setFormData, e)}
-          value={formData.treatment}
+          value={formData.treatment ?? ""}
           name={"treatment"}
           label={"المعالجة"}
           h={"150px"}
         />
         <Textarea
+          labelC={"#fff"}
           onChange={(e) => handleInputs(setFormData, e)}
-          value={formData.prescribed_medication}
+          value={formData.prescribed_medication ?? ""}
           name={"prescribed_medication"}
           label={"الدواء الموصوف"}
           h={"150px"}
         />
         <Textarea
+          labelC={"#fff"}
           onChange={(e) => handleInputs(setFormData, e)}
-          value={formData.description}
+          value={formData.description ?? ""}
           name={"description"}
           label={"الوصف"}
           h={"150px"}

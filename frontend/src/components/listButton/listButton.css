@@ -29,5 +29,4 @@
     border-radius: 5px;
     cursor: pointer;
     background-color: var(--hover);
-    transition: 0.2s ease;
 }

@@ -8,6 +8,7 @@ import { useTreatmentPlan } from "../../context/useTreatmentPlan";
 import { handleInputs } from "../../../../helperFunctions/handleInputs";
 import { useEditTreatmentPlan } from "../../queries/useEditTreatmentPlan";
 import { handleStatus } from "../../../../helperFunctions/handleStatus";
+import { useError } from "../../../../context/errorContext/useError";
 export default function TreatmentPlanEdit() {
   const {
     setSelectedTreatmentPlan,
@@ -16,7 +17,7 @@ export default function TreatmentPlanEdit() {
   } = useTreatmentPlan();
 
   const editTreatmentPlan = useEditTreatmentPlan();
-
+  const { showError } = useError();
   const [formData, setFormData] = useState({
     id: selectedTreatmentPlan.id,
     name: selectedTreatmentPlan.name,
@@ -26,14 +27,16 @@ export default function TreatmentPlanEdit() {
 
   //functions
 
-  function handleEditTreatmentPlan(){
-    editTreatmentPlan.mutate(formData,{
-      onSuccess:(treatmentPlan)=>{
+  function handleEditTreatmentPlan() {
+    editTreatmentPlan.mutate(formData, {
+      onSuccess: (treatmentPlan) => {
         setSelectedTreatmentPlan(treatmentPlan);
-        back()
-        
-      }
-    })
+        back();
+      },
+      onError: (error) => {
+        showError(error.message || "حدث خطأ أثناء تعديل خطة العلاج");
+      },
+    });
   }
 
   function back() {

@@ -3,7 +3,6 @@ import InfoWin from "../../../../components/infoWin/infoWin";
 import { useGetDayCount } from "../../queries/useGetDayCount";
 export default function ToDayInfo() {
     const {data} = useGetDayCount()
-    console.log(data)
   return (
     <div className="toDayInfo-div">
       <InfoWin data={data?.sessionsCount} title={"عدد جلسات اليوم"} />

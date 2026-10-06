@@ -6,7 +6,6 @@ export function useEditSession() {
 
     return useMutation({
         mutationFn: editSessionAPI,
-
         onSuccess: (updatedSession) => {
             queryClient.setQueryData(
                 ["sessions"],

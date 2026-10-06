@@ -12,7 +12,7 @@ export default function AppointmentsTable() {
   const { data , isError, error, isLoading, hasToken } = useGetAppo();
   useQueryUI({ data, isError, error, isLoading, hasToken });
   const [appoState,setAppoState] = useState("all") // all | day | approved | rejected | pending
-console.log(data)
+
   //functions
   function onRowClick(appo) {
     setSelectedAppo(appo);
