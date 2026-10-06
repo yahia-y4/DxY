@@ -44,12 +44,13 @@ export default function SectionsTable() {
   const tableData = searchFun(data ?? [], searchValue, ["name"]);
   return (
     <div className="sessionsTable">
-      <Search onSearch={handleSearch} onCancel={handleCancel} w={"90%"} />
+      <Search onSearch={handleSearch} onCancel={handleCancel} w={"50%"}/>
       <Table
         onRowClick={onRowClick}
         columns={columns}
         data={tableData}
         w={"90%"}
+         h={"70%"}
       />
       <AddButton onClick={addSession} />
     </div>

@@ -44,13 +44,13 @@ export default function PatientsTable() {
   const tableData = searchFun(data ?? [],searchValue,["name","father_name","nick_name","identity_card_number"]);
   return (
     <div className="patientsTable">
-      <Search onCancel={handleCancel} onSearch={handleSearch} w={"70%"} />
+      <Search onCancel={handleCancel} onSearch={handleSearch} w={"50%"} />
 
       <Table
         onRowClick={handleRowClick}
         data={tableData}
         columns={columns}
-        w={"70%"}
+        w={"90%"}
         h={"70%"}
       ></Table>
       <AddButton
